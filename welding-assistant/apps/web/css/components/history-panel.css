@@ -1,0 +1,109 @@
+/* The history panel: a column on the left of a chat page. */
+
+.history {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 0;
+  padding: 14px 12px;
+  border-right: 1px solid var(--line);
+  background: var(--surface);
+}
+
+.history__new {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--bg);
+  color: var(--ink);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.history__new:hover {
+  border-color: var(--accent-line);
+  background: var(--accent-soft);
+}
+
+.history__search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 10px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--bg);
+  color: var(--muted);
+}
+
+.history__search input {
+  flex: 1;
+  min-width: 0;
+  padding: 8px 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: var(--ink);
+  font-size: 14px;
+}
+
+.history__list {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+}
+
+.history__group {
+  padding: 12px 8px 4px;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.history__row {
+  display: block;
+  width: 100%;
+  padding: 7px 8px;
+  border: 0;
+  border-radius: 8px;
+  background: none;
+  color: var(--ink);
+  font-size: 14px;
+  text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.history__row:hover {
+  background: var(--accent-soft);
+}
+
+.history__empty {
+  padding: 12px 8px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.history__foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  color: var(--muted);
+  font-size: 12.5px;
+}
+
+.history__clear {
+  border: 0;
+  background: none;
+  color: var(--muted);
+  font-size: 12.5px;
+}
+
+.history__clear:hover {
+  color: var(--error);
+}

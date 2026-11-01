@@ -1,0 +1,10 @@
+# Environment used by llama.cpp's convert_hf_to_gguf.py (kept separate in ./venv_gguf).
+torch
+transformers
+numpy
+sentencepiece
+protobuf
+gguf
+safetensors
+PyYAML
+requests

@@ -1,0 +1,13 @@
+{
+  "min_cover": 0.45,
+  "rarest": false,
+  "support": 0.80,
+  "coherence": 0.45,
+  "min_matched": 2,
+  "hard_min": 0.45,
+  "faq_threshold": 0.55,
+  "faq_qcov": 0.80,
+  "faq_vcov": 0.45,
+  "faq_margin": 0.08,
+  "faq_rare": true
+}

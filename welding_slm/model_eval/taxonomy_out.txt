@@ -1,0 +1,11 @@
+wrong: 400/449
+| Failure mode | n | % of failures | % of all questions |
+|---|---|---|---|
+| unrelated or contradicts the source | 182 | 45.5 | 40.5 |
+| vague / generic (right topic, misses the specific fact) | 66 | 16.5 | 14.7 |
+| wrong number / value / unit | 57 | 14.2 | 12.7 |
+| wrong or invented standard / clause number | 41 | 10.2 | 9.1 |
+| too short / incomplete | 38 | 9.5 | 8.5 |
+| incomplete or wrong list / enumeration | 12 | 3.0 | 2.7 |
+| partially right numbers (missing some) | 2 | 0.5 | 0.4 |
+| degenerate / truncated / repetitive | 2 | 0.5 | 0.4 |

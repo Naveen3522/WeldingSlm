@@ -1,0 +1,189 @@
+/* Plain data tables with a row of icon buttons at the end, and the badges and pills used in them. */
+
+.table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13.5px;
+}
+
+.table th,
+.table td {
+  border: 1px solid var(--line);
+}
+
+.table th {
+  padding: 9px 12px;
+  background: var(--surface-2);
+  text-align: left;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.table td {
+  padding: 9px 12px;
+  vertical-align: middle;
+}
+
+.table th:first-child,
+.table td:first-child {
+  border-left: 0;
+}
+
+.table th:last-child,
+.table td:last-child {
+  border-right: 0;
+}
+
+.table thead th {
+  border-top: 0;
+}
+
+.table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+/* The tick column: a styled check box for each row, and one in the header that ticks them all */
+.table .tickcol {
+  width: 44px;
+  text-align: center;
+}
+
+.tick {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  display: inline-grid;
+  place-items: center;
+  border: 2px solid var(--accent-line);
+  border-radius: 5px;
+  background: var(--panel);
+  cursor: pointer;
+  vertical-align: middle;
+}
+
+.tick:checked,
+.tick:indeterminate {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.tick:checked::after {
+  content: "";
+  width: 4px;
+  height: 9px;
+  margin-top: -2px;
+  border: solid var(--accent-text);
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.tick:indeterminate::after {
+  content: "";
+  width: 9px;
+  height: 2px;
+  background: var(--accent-text);
+}
+
+.tick:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.tick:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.table .acts {
+  display: flex;
+  justify-content: flex-end;
+  gap: 6px;
+}
+
+.table .person {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.table .person i {
+  width: 28px;
+  height: 28px;
+  display: grid;
+  place-items: center;
+  flex: none;
+  border-radius: 50%;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: 13px;
+}
+
+.table .person small {
+  display: block;
+  color: var(--muted);
+}
+
+.pill {
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 2px 9px;
+  border: 0;
+  border-radius: 99px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 550;
+}
+
+button.pill:hover {
+  filter: brightness(0.95);
+}
+
+.pill.off {
+  background: var(--line-2);
+  color: var(--muted);
+}
+
+.pill.warn {
+  background: var(--amber-soft);
+  color: var(--amber);
+}
+
+.pill.bad {
+  background: var(--red-soft);
+  color: var(--red);
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 2px 9px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 550;
+  white-space: nowrap;
+}
+
+.badge.doc {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.badge.manual {
+  background: var(--amber-soft);
+  color: var(--amber);
+}

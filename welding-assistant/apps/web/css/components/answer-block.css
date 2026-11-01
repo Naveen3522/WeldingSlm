@@ -1,0 +1,100 @@
+/* The answer block: a WELD ASSIST label with where the wording came from, the answer, one quiet row (Sources, copy, Word, time) and the notices, one line each. */
+
+.answer-card__head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+  color: var(--accent);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+}
+
+.answer-card__wording {
+  margin-left: 6px;
+  padding: 1px 8px;
+  border: 1px solid var(--accent-line);
+  border-radius: 8px;
+  color: var(--ink-2);
+  font-size: 12px;
+  letter-spacing: 0;
+}
+
+.answer-card__row {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px solid var(--line-2);
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.answer-card__sources {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-right: 6px;
+  padding: 4px 10px;
+  border: 0;
+  border-radius: 8px;
+  background: none;
+  color: var(--accent);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.answer-card__sources:hover {
+  background: var(--accent-soft);
+}
+
+.answer-card__time {
+  margin-left: auto;
+}
+
+.answer-card__notices {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.answer-card__notices .notice {
+  padding: 8px 12px;
+}
+
+/* The one line shown while the answer is on its way */
+.pipeline {
+  margin-bottom: 12px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.pipeline__line {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.pipeline__spin {
+  flex: none;
+  width: 14px;
+  height: 14px;
+  border: 2px solid var(--line);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+.chips__note {
+  flex-basis: 100%;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.answer__hint {
+  margin: 6px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+}

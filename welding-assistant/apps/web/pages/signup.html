@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Create an account - Weld Assist</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <script src="/js/core/theme-init.js"></script>
+  <link rel="stylesheet" href="/css/core/icons.css">
+  <link rel="stylesheet" href="/css/core/tokens.css">
+  <link rel="stylesheet" href="/css/core/base.css">
+  <link rel="stylesheet" href="/css/components/form.css">
+  <link rel="stylesheet" href="/css/components/notice.css">
+  <link rel="stylesheet" href="/css/components/field-note.css">
+  <link rel="stylesheet" href="/css/pages/auth.css">
+</head>
+<body>
+  <main class="auth">
+    <form class="auth-card" id="authForm" novalidate>
+      <div class="auth-brand"><span class="mark"><i class="ms" data-icon="bolt" aria-hidden="true">&#xea0b;</i></span><b>Weld Assist</b></div>
+      <h1>Create an account</h1>
+      <p class="auth-note">Your account starts as a User. An Admin can change that.</p>
+      <label class="field"><span>Username</span><input id="authUser" type="text" autocomplete="nickname" spellcheck="false" placeholder="Choose a username"></label>
+      <label class="field"><span>Email</span><input id="authEmail" type="email" autocomplete="email" spellcheck="false" placeholder="name@example.com"></label>
+      <label class="field"><span>Password</span><input id="authNew" type="password" autocomplete="new-password" spellcheck="false" placeholder="Enter a password"></label>
+      <label class="field"><span>Confirm password</span><input id="authNew2" type="password" autocomplete="new-password" spellcheck="false" placeholder="Type it again"></label>
+      <div class="auth-error" id="authError" role="alert"></div>
+      <div class="auth-actions">
+        <button class="btn primary auth-submit" id="authSubmit" type="submit">Create account</button>
+      </div>
+      <p class="auth-switch">Already have an account? <a href="/login.html">Sign in</a></p>
+    </form>
+  </main>
+  <script type="module" src="/js/pages/signup.js"></script>
+</body>
+</html>

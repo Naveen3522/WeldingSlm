@@ -1,0 +1,323 @@
+[
+  {
+    "id": "joule_heat",
+    "name": "Heat generated at the joint (Joule heating)",
+    "aliases": ["Q = I2Rt", "Joule heat", "Joule heating", "resistance heating", "heat generation in spot welding", "dynamic resistance"],
+    "group": "Resistance welding",
+    "summary": "The heat energy generated at the weld joint in resistance welding, from current, resistance and time.",
+    "purpose": "Shows how strongly current drives the weld. Current enters as a squared term, so a 10% increase in current gives roughly 21% more heat, not 10%. That is why current is the most sensitive and most consequential parameter to adjust casually.",
+    "display": "Q = I² × R × t",
+    "variables": [
+      {"symbol": "I", "name": "Welding current", "meaning": "The welding current flowing through the joint, in amperes.", "unit": "A", "typical": "", "where_to_get": "The weld schedule or the controller's current reading.", "required": true, "min": 0, "max": null},
+      {"symbol": "R", "name": "Effective resistance at the joint", "meaning": "The effective resistance of the circuit at the joint, in ohms. It is not constant during the weld (dynamic resistance): contact resistance dominates at the start, then falls as contact area grows, then rises as the heated steel's resistivity increases.", "unit": "ohm", "typical": "", "where_to_get": "Resistance monitoring on a modern controller (Chapter 11), or a stated assumption.", "required": true, "min": 0, "max": null},
+      {"symbol": "t", "name": "Weld time", "meaning": "How long the current flows, in seconds.", "unit": "s", "typical": "", "where_to_get": "The weld schedule.", "required": true, "min": 0, "max": null}
+    ],
+    "outputs": [
+      {"symbol": "Q", "name": "Heat energy", "unit": "J", "expr": "I**2 * R * t", "decimals": 2}
+    ],
+    "assumptions": [
+      "This is the commonly cited simplified heat-generation relationship [S18]. Because resistance changes during the weld, R is an effective value, not a constant."
+    ],
+    "checks": [],
+    "examples": [
+      {"title": "A 10% increase in current (relative values)", "inputs": {"I": 1.1, "R": 1, "t": 1}, "expected": {"Q": 1.21}, "from_document": true, "note": "The document states a 10% current increase raises heat by roughly 21%. Values here are relative to a baseline of 1."}
+    ],
+    "related": [],
+    "source": {"document": "01_Fundamentals_and_Physics.docx", "section": "4. Governing Physical Relationships", "reference": "Document 01, section 4 (cites [S18])", "anchor": "Q = I² R t"}
+  },
+  {
+    "id": "electrode_face_diameter",
+    "name": "Electrode face diameter (spot welding)",
+    "aliases": ["d_e = 5 sqrt t", "electrode tip diameter", "electrode face", "contact face diameter", "electrode size", "tip diameter"],
+    "group": "Resistance welding",
+    "summary": "A starting electrode contact-face diameter from the thickness of the thinnest sheet.",
+    "purpose": "Useful for sizing a first trial or sanity-checking a program. The document is explicit that every such rule must be confirmed by destructive testing and, for production use, by procedure qualification; none of them is a substitute for a qualified WPS.",
+    "display": "d_e = 5 × √t",
+    "variables": [
+      {"symbol": "t", "name": "Thickness of the thinnest sheet", "meaning": "Thickness of the thinnest sheet in the stack, in millimetres.", "unit": "mm", "typical": "Document 20 tabulates 0.5 to 3.0 mm.", "where_to_get": "The drawing or the sheet specification.", "required": true, "min": 0, "max": null}
+    ],
+    "outputs": [
+      {"symbol": "d_e", "name": "Electrode face diameter", "unit": "mm", "expr": "5 * sqrt(t)", "decimals": 1}
+    ],
+    "assumptions": [
+      "Published as ISO 14373 guidance for spot welding low-carbon steel [S6].",
+      "The coefficient is sourced for low-carbon steel. The documents carry no independently sourced coefficient for aluminium.",
+      "Confirm by destructive testing and, for production, by procedure qualification (Chapter 8)."
+    ],
+    "checks": [],
+    "examples": [
+      {"title": "t = 0.65 mm", "inputs": {"t": 0.65}, "expected": {"d_e": 4.0}, "from_document": true, "note": "Document 20, section 3."},
+      {"title": "t = 1.0 mm", "inputs": {"t": 1.0}, "expected": {"d_e": 5.0}, "from_document": true, "note": "Document 20, section 3."},
+      {"title": "t = 2.5 mm", "inputs": {"t": 2.5}, "expected": {"d_e": 7.9}, "from_document": true, "note": "Document 20, section 3."}
+    ],
+    "related": ["min_nugget_diameter", "min_weld_spacing", "min_edge_distance"],
+    "source": {"document": "01_Fundamentals_and_Physics.docx", "section": "6. Design Rules With Numeric, Sourced Values", "reference": "Document 01, section 6 (ISO 14373 guidance [S6]); worked values in document 20, section 3", "anchor": "d_e = 5√t (mm)"}
+  },
+  {
+    "id": "min_nugget_diameter",
+    "name": "Minimum weld nugget diameter (spot welding)",
+    "aliases": ["nugget diameter", "minimum nugget", "min nugget size", "weld button diameter", "nugget size"],
+    "group": "Resistance welding",
+    "summary": "The range of minimum acceptable nugget diameters from the sheet thickness.",
+    "purpose": "Gives the smallest nugget that is generally accepted. It uses the same square-root scaling as the electrode-face rule, so a correctly sized electrode can make a code-minimum nugget when current, time and force are set correctly.",
+    "display": "d_w = 4 × √t  to  5 × √t",
+    "variables": [
+      {"symbol": "t", "name": "Thickness of the thinnest sheet", "meaning": "Thickness of the thinnest sheet in the stack, in millimetres.", "unit": "mm", "typical": "Document 20 tabulates 0.5 to 3.0 mm.", "where_to_get": "The drawing or the sheet specification.", "required": true, "min": 0, "max": null}
+    ],
+    "outputs": [
+      {"symbol": "d_w_min", "name": "Minimum nugget diameter (low end of the range)", "unit": "mm", "expr": "4 * sqrt(t)", "decimals": 1},
+      {"symbol": "d_w_max", "name": "Minimum nugget diameter (high end of the range)", "unit": "mm", "expr": "5 * sqrt(t)", "decimals": 1}
+    ],
+    "assumptions": [
+      "A widely used rule of thumb [S18]. It is a range, not a single value.",
+      "Like the other design rules in this group, it must be confirmed by destructive testing and, for production use, by procedure qualification."
+    ],
+    "checks": [],
+    "examples": [
+      {"title": "t = 0.65 mm", "inputs": {"t": 0.65}, "expected": {"d_w_min": 3.2, "d_w_max": 4.0}, "from_document": true, "note": "Document 20, section 3."},
+      {"title": "t = 1.0 mm", "inputs": {"t": 1.0}, "expected": {"d_w_min": 4.0, "d_w_max": 5.0}, "from_document": true, "note": "Document 20, section 3."}
+    ],
+    "related": ["electrode_face_diameter", "min_edge_distance"],
+    "source": {"document": "01_Fundamentals_and_Physics.docx", "section": "6. Design Rules With Numeric, Sourced Values", "reference": "Document 01, section 6 ([S18]); worked values in document 20, section 3", "anchor": "4√t to 5√t"}
+  },
+  {
+    "id": "min_weld_spacing",
+    "name": "Minimum spacing between spot welds",
+    "aliases": ["weld spacing", "spot spacing", "spacing between welds", "weld pitch", "16t rule"],
+    "group": "Resistance welding",
+    "summary": "The smallest allowed distance between adjacent spot welds, from the sheet thickness.",
+    "purpose": "A geometry rule from ISO 14373 guidance: adjacent spot welds must not be closer than 16 times the thickness, preferably further apart. It is used with the electrode, nugget and edge-distance rules as a common starting geometry for the steel family.",
+    "display": "s ≥ 16 × t",
+    "variables": [
+      {"symbol": "t", "name": "Sheet thickness", "meaning": "Sheet thickness in millimetres, as the document applies the rule.", "unit": "mm", "typical": "Document 20 tabulates 0.5 to 3.0 mm.", "where_to_get": "The drawing or the sheet specification.", "required": true, "min": 0, "max": null}
+    ],
+    "outputs": [
+      {"symbol": "s_min", "name": "Minimum weld spacing", "unit": "mm", "expr": "16 * t", "decimals": 1}
+    ],
+    "assumptions": [
+      "ISO 14373 guidance [S6]: not less than 16t, preferably greater, with a tolerance of ±10%.",
+      "Confirm by destructive testing and, for production, by procedure qualification."
+    ],
+    "checks": [],
+    "examples": [
+      {"title": "t = 0.65 mm", "inputs": {"t": 0.65}, "expected": {"s_min": 10.4}, "from_document": true, "note": "Document 20, section 3."},
+      {"title": "t = 2.5 mm", "inputs": {"t": 2.5}, "expected": {"s_min": 40.0}, "from_document": true, "note": "Document 20, section 3."}
+    ],
+    "related": ["electrode_face_diameter", "min_nugget_diameter", "min_edge_distance"],
+    "source": {"document": "01_Fundamentals_and_Physics.docx", "section": "6. Design Rules With Numeric, Sourced Values", "reference": "Document 01, section 6 (ISO 14373 guidance [S6]); worked values in document 20, section 3", "anchor": "not less than 16t"}
+  },
+  {
+    "id": "min_edge_distance",
+    "name": "Minimum edge distance (spot welding)",
+    "aliases": ["edge distance", "distance to edge", "weld to edge distance"],
+    "group": "Resistance welding",
+    "summary": "The smallest allowed distance from a spot weld to the edge, from the weld (nugget) diameter.",
+    "purpose": "A geometry rule from ISO 14373 guidance for how far a spot weld must sit from the edge of the sheet. Document 20 evaluates it at both ends of the nugget-diameter range.",
+    "display": "e ≥ 1.25 × d_w",
+    "variables": [
+      {"symbol": "d_w", "name": "Weld (nugget) diameter", "meaning": "The diameter of the weld nugget, in millimetres. Use the minimum nugget diameter for the thickness if no measured value is available.", "unit": "mm", "typical": "", "where_to_get": "A peel or chisel test result, or the minimum nugget diameter rule.", "required": true, "min": 0, "max": null}
+    ],
+    "outputs": [
+      {"symbol": "e_min", "name": "Minimum edge distance", "unit": "mm", "expr": "1.25 * d_w", "decimals": 1}
+    ],
+    "assumptions": [
+      "ISO 14373 guidance [S6]: not less than 1.25 × d_w.",
+      "Confirm by destructive testing and, for production, by procedure qualification."
+    ],
+    "checks": [],
+    "examples": [
+      {"title": "d_w = 3.2 mm", "inputs": {"d_w": 3.2}, "expected": {"e_min": 4.0}, "from_document": true, "note": "Document 20, section 3 (first row, low end)."},
+      {"title": "d_w = 4.0 mm", "inputs": {"d_w": 4.0}, "expected": {"e_min": 5.0}, "from_document": true, "note": "Document 20, section 3 (first row, high end)."}
+    ],
+    "related": ["min_nugget_diameter", "min_weld_spacing"],
+    "source": {"document": "01_Fundamentals_and_Physics.docx", "section": "6. Design Rules With Numeric, Sourced Values", "reference": "Document 01, section 6 (ISO 14373 guidance [S6]); worked values in document 20, section 3", "anchor": "not less than 1.25 × d_w"}
+  },
+  {
+    "id": "first_trial_estimate",
+    "name": "First-trial estimate for mild steel (imperial)",
+    "aliases": ["rough estimate", "first trial parameters", "rule of thumb parameters", "starting parameters", "weld force estimate", "weld current estimate", "force current time estimate"],
+    "group": "Resistance welding",
+    "summary": "A rough starting electrode force, weld time and current for mild steel from the total stack thickness, in inches.",
+    "purpose": "A rough first-trial estimate for when there is no qualified schedule yet. The document calls it a commonly published shop rule of thumb, to be confirmed by destructive testing and, for production, by procedure qualification.",
+    "display": "Force ≈ 6000 × ΣT   ·   Time ≈ 100 × ΣT   ·   Current ≈ 100,000 × ΣT",
+    "variables": [
+      {"symbol": "sumT", "name": "Total stack thickness (ΣT)", "meaning": "The sum of the sheet thicknesses in the stack, in inches.", "unit": "in", "typical": "The document notes a change above 0.080 in.", "where_to_get": "The drawing or the sheet specifications.", "required": true, "min": 0, "max": null}
+    ],
+    "outputs": [
+      {"symbol": "force_lbf", "name": "Electrode force", "unit": "lbf", "expr": "6000 * sumT", "decimals": 0},
+      {"symbol": "weld_cycles", "name": "Weld time", "unit": "cycles (60 Hz)", "expr": "100 * sumT", "decimals": 1},
+      {"symbol": "current_A", "name": "Weld current", "unit": "A", "expr": "100000 * sumT", "decimals": 0}
+    ],
+    "assumptions": [
+      "Mild steel only, imperial units [S18].",
+      "A rough first trial, not a schedule."
+    ],
+    "checks": [
+      {"when": "sumT > 0.080", "message": "The document says to reduce by about 20% if the total thickness is above 0.080 in. It does not say which of the three values, so check the section before using them."}
+    ],
+    "examples": [
+      {"title": "ΣT = 0.080 in (the document's threshold)", "inputs": {"sumT": 0.08}, "expected": {"force_lbf": 480, "weld_cycles": 8, "current_A": 8000}, "from_document": false, "note": "Calculated from the document's three relationships; the document gives no worked example."}
+    ],
+    "related": ["electrode_face_diameter"],
+    "source": {"document": "01_Fundamentals_and_Physics.docx", "section": "6. Design Rules With Numeric, Sourced Values", "reference": "Document 01, section 6 (shop rule of thumb [S18])", "anchor": "Force (lbf) ≈ 6000 × ΣT"}
+  },
+  {
+    "id": "arc_energy_heat_input",
+    "name": "Arc energy and heat input (arc welding)",
+    "aliases": ["heat input", "arc energy", "kJ/mm", "heat input kJ/mm", "energy per unit length", "welding heat input", "thermal efficiency"],
+    "group": "Arc welding",
+    "summary": "Energy delivered per unit length of weld: arc energy from voltage, current and travel speed, and heat input as arc energy times a thermal efficiency factor.",
+    "purpose": "Heat input bounds how fast the joint cools, so it matters for hardness limits and cracking. The document stresses that arc energy and heat input are different quantities: standards differ on which they require, and quoting the wrong one is a common submittal error (in its worked example the two differ by twenty percent).",
+    "display": "Arc energy = (V × I × 60) ÷ (v × 1000)     Heat input = Arc energy × η",
+    "variables": [
+      {"symbol": "V", "name": "Arc voltage", "meaning": "The arc voltage, in volts.", "unit": "V", "typical": "", "where_to_get": "The weld procedure or the power source display.", "required": true, "min": 0, "max": null},
+      {"symbol": "I", "name": "Welding current", "meaning": "The welding current, in amperes.", "unit": "A", "typical": "", "where_to_get": "The weld procedure or the power source display.", "required": true, "min": 0, "max": null},
+      {"symbol": "v", "name": "Travel speed", "meaning": "How fast the arc moves along the joint, in millimetres per minute.", "unit": "mm/min", "typical": "", "where_to_get": "The weld procedure, or measure a bead length against time.", "required": true, "min": 0, "max": null},
+      {"symbol": "eta", "name": "Thermal efficiency factor (η)", "meaning": "The fraction of the arc energy that actually enters the workpiece rather than being lost to radiation, convection and spatter. Optional: leave it out to get arc energy only.", "unit": "-", "typical": "SAW about 0.95 to 1.0; SMAW 0.75 to 0.85; GMAW and FCAW 0.75 to 0.85; GTAW 0.6 to 0.7; PAW 0.6 to 0.8 (approximate, they vary between sources)", "where_to_get": "The governing standard prescribes the factor for qualification records; use it rather than a textbook value.", "required": false, "min": 0, "max": 1}
+    ],
+    "outputs": [
+      {"symbol": "arc_energy", "name": "Arc energy", "unit": "kJ/mm", "expr": "V * I * 60 / (v * 1000)", "decimals": 2},
+      {"symbol": "heat_input", "name": "Heat input", "unit": "kJ/mm", "expr": "arc_energy * eta", "decimals": 2}
+    ],
+    "assumptions": [
+      "Assumes steady-state travel. It does not correctly describe weaving, stitch welding, pulsed waveforms with high peak currents, or any case where the instantaneous power differs substantially from the average the meter reports.",
+      "Efficiency factors differ between published sources. For a qualification record, customer submittal or cracking investigation, use the factor prescribed by the governing standard.",
+      "Check whether the governing standard requires arc energy or heat input."
+    ],
+    "checks": [],
+    "examples": [
+      {"title": "28 V, 260 A, 350 mm/min", "inputs": {"V": 28, "I": 260, "v": 350}, "expected": {"arc_energy": 1.25}, "from_document": true, "note": "Document 22, section 3."},
+      {"title": "Flux-cored fillet: 29 V, 290 A, 400 mm/min, η = 0.8", "inputs": {"V": 29, "I": 290, "v": 400, "eta": 0.8}, "expected": {"arc_energy": 1.26, "heat_input": 1.01}, "from_document": true, "note": "Document 22, section 16."}
+    ],
+    "related": ["dilution"],
+    "source": {"document": "22_Shared_Physics_of_Fusion_Welding.docx", "section": "3. Heat Input: The Formula, the Efficiency Factor, and the Honest Uncertainty in It", "reference": "Document 22, section 3; worked example in section 16", "anchor": "Heat input (kJ/mm) = (Arc voltage × Welding current × 60)"}
+  },
+  {
+    "id": "dilution",
+    "name": "Dilution",
+    "aliases": ["weld dilution", "dilution percent", "dilution %", "parent metal dilution"],
+    "group": "Arc welding",
+    "summary": "The share of the weld metal that came from melted parent metal rather than from the filler.",
+    "purpose": "Weld metal composition is a mixture of filler and parent, so a filler chosen correctly on paper can give unacceptable chemistry at high dilution. Dilution is the whole engineering problem in corrosion-resistant cladding, in dissimilar-metal joints, and in root passes of high-alloy pipe.",
+    "display": "Dilution (%) = (A_parent ÷ A_total) × 100",
+    "variables": [
+      {"symbol": "A_parent", "name": "Melted parent metal area", "meaning": "The cross-sectional area of the weld that was melted parent metal, in any area unit (use the same unit as the total).", "unit": "mm2", "typical": "", "where_to_get": "A macro-section of the weld.", "required": true, "min": 0, "max": null},
+      {"symbol": "A_total", "name": "Total weld cross-sectional area", "meaning": "The total cross-sectional area of the weld metal, in the same unit as the parent metal area.", "unit": "mm2", "typical": "", "where_to_get": "A macro-section of the weld.", "required": true, "min": 0, "max": null}
+    ],
+    "outputs": [
+      {"symbol": "D", "name": "Dilution", "unit": "%", "expr": "A_parent / A_total * 100", "decimals": 1}
+    ],
+    "assumptions": [
+      "Autogenous GTAW is 100 % dilution by definition; submerged arc and laser welding are typically high; SMAW at moderate current is low."
+    ],
+    "checks": [
+      {"when": "A_parent > A_total", "message": "The melted parent metal area cannot be larger than the total weld area; check the inputs."}
+    ],
+    "examples": [
+      {"title": "Half the weld metal from the parent (illustrative)", "inputs": {"A_parent": 30, "A_total": 60}, "expected": {"D": 50}, "from_document": false, "note": "Illustrative arithmetic; the document gives no worked example."}
+    ],
+    "related": ["arc_energy_heat_input"],
+    "source": {"document": "22_Shared_Physics_of_Fusion_Welding.docx", "section": "9. Dilution", "reference": "Document 22, section 9", "anchor": "Dilution (%) = (Area of melted parent metal"}
+  },
+  {
+    "id": "ce_iiw",
+    "name": "Carbon equivalent (IIW form)",
+    "aliases": ["CE", "CE(IIW)", "IIW carbon equivalent", "carbon equivalent"],
+    "group": "Weldability",
+    "summary": "A single number for hardenability from the steel's composition, in the IIW form.",
+    "purpose": "Converts a multi-element composition into one number expressing hardenability, so steels of different chemistry can be compared on a single scale.",
+    "display": "CE(IIW) = C + Mn/6 + (Cr + Mo + V)/5 + (Ni + Cu)/15",
+    "variables": [
+      {"symbol": "C", "name": "Carbon", "meaning": "Carbon content of the steel, in weight percent.", "unit": "wt%", "typical": "", "where_to_get": "The mill certificate for the heat being welded.", "required": true, "min": 0, "max": null},
+      {"symbol": "Mn", "name": "Manganese", "meaning": "Manganese content, in weight percent.", "unit": "wt%", "typical": "", "where_to_get": "The mill certificate for the heat being welded.", "required": true, "min": 0, "max": null},
+      {"symbol": "Cr", "name": "Chromium", "meaning": "Chromium content, in weight percent. If left out it is taken as 0.", "unit": "wt%", "typical": "", "where_to_get": "The mill certificate.", "required": false, "default": 0, "min": 0, "max": null},
+      {"symbol": "Mo", "name": "Molybdenum", "meaning": "Molybdenum content, in weight percent. If left out it is taken as 0.", "unit": "wt%", "typical": "", "where_to_get": "The mill certificate.", "required": false, "default": 0, "min": 0, "max": null},
+      {"symbol": "V", "name": "Vanadium", "meaning": "Vanadium content, in weight percent. If left out it is taken as 0.", "unit": "wt%", "typical": "", "where_to_get": "The mill certificate.", "required": false, "default": 0, "min": 0, "max": null},
+      {"symbol": "Ni", "name": "Nickel", "meaning": "Nickel content, in weight percent. If left out it is taken as 0.", "unit": "wt%", "typical": "", "where_to_get": "The mill certificate.", "required": false, "default": 0, "min": 0, "max": null},
+      {"symbol": "Cu", "name": "Copper", "meaning": "Copper content, in weight percent. If left out it is taken as 0.", "unit": "wt%", "typical": "", "where_to_get": "The mill certificate.", "required": false, "default": 0, "min": 0, "max": null}
+    ],
+    "outputs": [
+      {"symbol": "CE", "name": "Carbon equivalent (IIW)", "unit": "-", "expr": "C + Mn/6 + (Cr + Mo + V)/5 + (Ni + Cu)/15", "decimals": 3}
+    ],
+    "assumptions": [
+      "A hardenability index, not a preheat prescription. It says how readily the steel forms martensite on cooling; it says nothing about hydrogen level, restraint or thickness.",
+      "Quoted thresholds (for example 'below 0.40 is readily weldable') are orientation only. Codes such as AWS D1.1 Annex B do not use a single cutoff; they combine composition, thickness, hydrogen level and restraint.",
+      "Needs a real analysis. A value from the maximum permitted composition of a specification is a worst case; one from a mill certificate is specific to that heat.",
+      "State which carbon-equivalent formula was used. See the AWS D1.1 Annex B variant, which includes silicon."
+    ],
+    "checks": [
+      {"when": "C < 0.18", "message": "For modern low-carbon steels (conventionally below about 0.18 % C) the IIW form tends to overestimate risk; the document says Pcm is more appropriate there."}
+    ],
+    "examples": [
+      {"title": "Illustrative composition", "inputs": {"C": 0.2, "Mn": 1.2, "Cr": 0.1, "Mo": 0.05, "V": 0.02, "Ni": 0.15, "Cu": 0.1}, "expected": {"CE": 0.451}, "from_document": false, "note": "Illustrative values; the document gives the formula but no worked example."}
+    ],
+    "related": ["ce_aws_d1_1", "pcm"],
+    "source": {"document": "23_Weldability_I_Carbon_and_Low_Alloy_Steels.docx", "section": "3. Carbon Equivalent: The Formulas, Their Disagreements, and Their Limits", "reference": "Document 23, section 3 (cites [S2])", "anchor": "CE(IIW) = C + Mn/6"}
+  },
+  {
+    "id": "ce_aws_d1_1",
+    "name": "Carbon equivalent (AWS D1.1 Annex B form, with silicon)",
+    "aliases": ["CE AWS", "CE with silicon", "AWS D1.1 carbon equivalent", "carbon equivalent silicon", "carbon equivalent"],
+    "group": "Weldability",
+    "summary": "The IIW-type carbon equivalent as AWS D1.1 Annex B presents it, with silicon added to the manganese term.",
+    "purpose": "A real, documented variant of the IIW form. A result from this form must not be compared against a threshold derived without the silicon term, and anyone using a carbon equivalent in a contractual context must state which formula was used.",
+    "display": "CE = C + (Mn + Si)/6 + (Cr + Mo + V)/5 + (Ni + Cu)/15",
+    "variables": [
+      {"symbol": "C", "name": "Carbon", "meaning": "Carbon content of the steel, in weight percent.", "unit": "wt%", "typical": "", "where_to_get": "The mill certificate for the heat being welded.", "required": true, "min": 0, "max": null},
+      {"symbol": "Mn", "name": "Manganese", "meaning": "Manganese content, in weight percent.", "unit": "wt%", "typical": "", "where_to_get": "The mill certificate for the heat being welded.", "required": true, "min": 0, "max": null},
+      {"symbol": "Si", "name": "Silicon", "meaning": "Silicon content, in weight percent. This term is what separates this form from the IIW form.", "unit": "wt%", "typical": "", "where_to_get": "The mill certificate for the heat being welded.", "required": true, "min": 0, "max": null},
+      {"symbol": "Cr", "name": "Chromium", "meaning": "Chromium content, in weight percent. If left out it is taken as 0.", "unit": "wt%", "typical": "", "where_to_get": "The mill certificate.", "required": false, "default": 0, "min": 0, "max": null},
+      {"symbol": "Mo", "name": "Molybdenum", "meaning": "Molybdenum content, in weight percent. If left out it is taken as 0.", "unit": "wt%", "typical": "", "where_to_get": "The mill certificate.", "required": false, "default": 0, "min": 0, "max": null},
+      {"symbol": "V", "name": "Vanadium", "meaning": "Vanadium content, in weight percent. If left out it is taken as 0.", "unit": "wt%", "typical": "", "where_to_get": "The mill certificate.", "required": false, "default": 0, "min": 0, "max": null},
+      {"symbol": "Ni", "name": "Nickel", "meaning": "Nickel content, in weight percent. If left out it is taken as 0.", "unit": "wt%", "typical": "", "where_to_get": "The mill certificate.", "required": false, "default": 0, "min": 0, "max": null},
+      {"symbol": "Cu", "name": "Copper", "meaning": "Copper content, in weight percent. If left out it is taken as 0.", "unit": "wt%", "typical": "", "where_to_get": "The mill certificate.", "required": false, "default": 0, "min": 0, "max": null}
+    ],
+    "outputs": [
+      {"symbol": "CE", "name": "Carbon equivalent (AWS D1.1 Annex B form)", "unit": "-", "expr": "C + (Mn + Si)/6 + (Cr + Mo + V)/5 + (Ni + Cu)/15", "decimals": 3}
+    ],
+    "assumptions": [
+      "Presented in AWS D1.1 Annex B as an IIW-type formula that includes silicon in the manganese term [S2].",
+      "Comparing a result from this form with a threshold derived without the silicon term is not like-for-like.",
+      "A hardenability index, not a preheat prescription; it needs a real analysis (mill certificate for the heat being welded)."
+    ],
+    "checks": [],
+    "examples": [
+      {"title": "Illustrative composition", "inputs": {"C": 0.2, "Mn": 1.2, "Si": 0.3, "Cr": 0.1, "Mo": 0.05, "V": 0.02, "Ni": 0.15, "Cu": 0.1}, "expected": {"CE": 0.501}, "from_document": false, "note": "Illustrative values; the document gives the formula but no worked example."}
+    ],
+    "related": ["ce_iiw", "pcm"],
+    "source": {"document": "23_Weldability_I_Carbon_and_Low_Alloy_Steels.docx", "section": "3. Carbon Equivalent: The Formulas, Their Disagreements, and Their Limits", "reference": "Document 23, section 3 (AWS D1.1 Annex B form [S2])", "anchor": "CE = C + (Mn + Si)/6"}
+  },
+  {
+    "id": "pcm",
+    "name": "Pcm (critical metal parameter)",
+    "aliases": ["Pcm", "critical metal parameter", "carbon equivalent Pcm"],
+    "group": "Weldability",
+    "summary": "A carbon equivalent that weights carbon more heavily and includes boron.",
+    "purpose": "Weights carbon much more heavily than the IIW form and includes boron, so it is the more appropriate measure for modern low-carbon steels, conventionally below about 0.18 % C, where the IIW form tends to overestimate risk.",
+    "display": "Pcm = C + Si/30 + (Mn + Cu + Cr)/20 + Ni/60 + Mo/15 + V/10 + 5B",
+    "variables": [
+      {"symbol": "C", "name": "Carbon", "meaning": "Carbon content of the steel, in weight percent.", "unit": "wt%", "typical": "", "where_to_get": "The mill certificate for the heat being welded.", "required": true, "min": 0, "max": null},
+      {"symbol": "Si", "name": "Silicon", "meaning": "Silicon content, in weight percent. If left out it is taken as 0.", "unit": "wt%", "typical": "", "where_to_get": "The mill certificate.", "required": false, "default": 0, "min": 0, "max": null},
+      {"symbol": "Mn", "name": "Manganese", "meaning": "Manganese content, in weight percent. If left out it is taken as 0.", "unit": "wt%", "typical": "", "where_to_get": "The mill certificate.", "required": false, "default": 0, "min": 0, "max": null},
+      {"symbol": "Cu", "name": "Copper", "meaning": "Copper content, in weight percent. If left out it is taken as 0.", "unit": "wt%", "typical": "", "where_to_get": "The mill certificate.", "required": false, "default": 0, "min": 0, "max": null},
+      {"symbol": "Cr", "name": "Chromium", "meaning": "Chromium content, in weight percent. If left out it is taken as 0.", "unit": "wt%", "typical": "", "where_to_get": "The mill certificate.", "required": false, "default": 0, "min": 0, "max": null},
+      {"symbol": "Ni", "name": "Nickel", "meaning": "Nickel content, in weight percent. If left out it is taken as 0.", "unit": "wt%", "typical": "", "where_to_get": "The mill certificate.", "required": false, "default": 0, "min": 0, "max": null},
+      {"symbol": "Mo", "name": "Molybdenum", "meaning": "Molybdenum content, in weight percent. If left out it is taken as 0.", "unit": "wt%", "typical": "", "where_to_get": "The mill certificate.", "required": false, "default": 0, "min": 0, "max": null},
+      {"symbol": "V", "name": "Vanadium", "meaning": "Vanadium content, in weight percent. If left out it is taken as 0.", "unit": "wt%", "typical": "", "where_to_get": "The mill certificate.", "required": false, "default": 0, "min": 0, "max": null},
+      {"symbol": "B", "name": "Boron", "meaning": "Boron content, in weight percent. If left out it is taken as 0.", "unit": "wt%", "typical": "", "where_to_get": "The mill certificate.", "required": false, "default": 0, "min": 0, "max": null}
+    ],
+    "outputs": [
+      {"symbol": "Pcm", "name": "Pcm", "unit": "-", "expr": "C + Si/30 + (Mn + Cu + Cr)/20 + Ni/60 + Mo/15 + V/10 + 5*B", "decimals": 3}
+    ],
+    "assumptions": [
+      "A hardenability index, not a preheat prescription; it says nothing on its own about hydrogen level, restraint or thickness [S2].",
+      "Needs a real analysis: a value from the maximum permitted composition is a worst case; one from a mill certificate is specific to that heat."
+    ],
+    "checks": [],
+    "examples": [
+      {"title": "Illustrative composition", "inputs": {"C": 0.1, "Si": 0.3, "Mn": 1.2, "Cu": 0.1, "Cr": 0.1, "Ni": 0.2, "Mo": 0.05, "V": 0.02, "B": 0.002}, "expected": {"Pcm": 0.199}, "from_document": false, "note": "Illustrative values; the document gives the formula but no worked example."}
+    ],
+    "related": ["ce_iiw", "ce_aws_d1_1"],
+    "source": {"document": "23_Weldability_I_Carbon_and_Low_Alloy_Steels.docx", "section": "3. Carbon Equivalent: The Formulas, Their Disagreements, and Their Limits", "reference": "Document 23, section 3 (cites [S2])", "anchor": "Pcm = C + Si/30"}
+  }
+]

@@ -1,0 +1,2 @@
+# Weld Assist web app (the part most people need). Python 3.10+.
+-r welding-assistant/requirements.txt

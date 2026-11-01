@@ -1,0 +1,311 @@
+/* The top bar on every signed-in page: the brand and the page links on the left, then the model status, the theme button and the "Username (role)" menu.
+   Below 672 px the links and the menu fold into one hamburger on the right. */
+
+.top {
+  flex: none;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 0 20px;
+  background: var(--panel);
+  border-bottom: 1px solid var(--line);
+  position: relative;
+  z-index: 30;
+}
+
+.top-left,
+.top-mid,
+.top-right {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+}
+
+.top-mid {
+  flex: 1;
+  gap: 2px;
+  align-self: stretch;
+}
+
+.top-right {
+  gap: 12px;
+  margin-left: auto;
+}
+
+/* Brand */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  min-width: 0;
+  color: inherit;
+  text-decoration: none;
+}
+
+.brand b {
+  font-size: 15.5px;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+}
+
+.mark {
+  flex: none;
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  border-radius: var(--radius);
+  background: var(--accent);
+  color: var(--accent-text);
+  font-size: 17px;
+}
+
+/* The page links: the current page carries the accent line */
+.navlink {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 0 12px;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  background: none;
+  color: var(--text-2);
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.navlink:hover {
+  color: var(--text);
+}
+
+.navlink.on {
+  color: var(--text);
+  border-bottom-color: var(--accent);
+}
+
+/* Model status: a plain traffic-light dot and normal text */
+.status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--text);
+  white-space: nowrap;
+}
+
+.dot {
+  flex: none;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--dot-checking);
+  border: 1px solid color-mix(in srgb, var(--text) 30%, transparent);
+}
+
+.dot.ok {
+  background: var(--dot-ready);
+}
+
+.dot.warn {
+  background: var(--dot-training);
+}
+
+.dot.bad {
+  background: var(--dot-offline);
+}
+
+.iconbtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 36px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--panel);
+  color: var(--text);
+  padding: 0 10px;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.iconbtn:hover,
+.iconbtn.on {
+  background: var(--accent-soft);
+  border-color: var(--accent-line);
+}
+
+.iconbtn.square {
+  width: 36px;
+  justify-content: center;
+  padding: 0;
+}
+
+/* The theme button shows the icon of the mode you would switch to */
+#themeBtn .t-sun,
+#themeBtn .t-moon {
+  display: none;
+}
+
+:root[data-theme="dark"] #themeBtn .t-sun,
+:root[data-theme="light"] #themeBtn .t-moon {
+  display: inline-block;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) #themeBtn .t-sun {
+    display: inline-block;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme]) #themeBtn .t-moon {
+    display: inline-block;
+  }
+}
+
+/* A menu opened from the bar: one flat list, a line only above Sign out */
+.menu-wrap {
+  position: relative;
+}
+
+.menu-panel {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  z-index: 40;
+  width: 270px;
+  display: flex;
+  flex-direction: column;
+  padding: 6px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow), 0 12px 40px rgba(0, 0, 0, 0.14);
+}
+
+.menu-panel[hidden] {
+  display: none;
+}
+
+.menu-who {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 8px 12px;
+  border-bottom: 1px solid var(--line-soft);
+  margin-bottom: 4px;
+}
+
+.menu-avatar {
+  flex: none;
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--accent-text);
+  font-weight: 700;
+}
+
+.menu-who b {
+  display: block;
+  line-height: 1.25;
+}
+
+.menu-who small {
+  color: var(--muted);
+}
+
+.menu-item {
+  width: 100%;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 10px;
+  border: 0;
+  border-radius: var(--radius);
+  background: none;
+  color: var(--text);
+  font-size: 16px;
+  text-align: left;
+  text-decoration: none;
+}
+
+.menu-item:hover {
+  background: var(--accent-soft);
+}
+
+.menu-item i.ms {
+  color: var(--muted);
+}
+
+.menu-item.current {
+  font-weight: 700;
+  background: var(--accent-soft);
+}
+
+.menu-item.danger,
+.menu-item.danger i.ms {
+  color: var(--error);
+}
+
+.menu-line {
+  height: 1px;
+  margin: 4px 2px;
+  background: var(--line-soft);
+}
+
+/* The hamburger: only on a narrow window */
+.hamburger {
+  display: none;
+}
+
+.hamburger-wrap {
+  display: none;
+}
+
+/* The banner under the bar (the model is offline) */
+.banner {
+  flex: none;
+  padding: 9px 20px;
+  border-bottom: 1px solid var(--line);
+  background: var(--warning-tint);
+  color: var(--text);
+  font-size: 14px;
+}
+
+@media (max-width: 671px) {
+  .top {
+    padding: 0 12px;
+    gap: 10px;
+  }
+
+  .top-mid,
+  .status span:last-child,
+  .acct-wrap {
+    display: none;
+  }
+
+  .hamburger-wrap {
+    display: block;
+  }
+
+  .hamburger {
+    display: inline-flex;
+  }
+
+  .brand b {
+    display: none;
+  }
+}
+
+.backbar {
+  flex: none;
+  padding: 10px 20px 0;
+}

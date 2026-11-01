@@ -1,0 +1,566 @@
+/* Model management: the training section and the table of models. */
+
+.train-state {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface-2);
+}
+
+.train-state.run {
+  border-color: var(--accent-line);
+  background: var(--accent-soft);
+}
+
+.stages {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 16px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.stages .on {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.stages .done {
+  color: var(--accent);
+}
+
+.model__name {
+  display: block;
+}
+
+.model__intro {
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.model__status:empty {
+  display: none;
+}
+
+.model__name small {
+  display: block;
+  color: var(--muted);
+}
+
+.model__cardhead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.model__filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.model__filters input[type="search"] {
+  flex: 1;
+  min-width: 200px;
+}
+
+.model-page .tabs__panel {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding-top: 16px;
+}
+
+.syscheck {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.syscheck li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+}
+
+.syscheck b {
+  min-width: 170px;
+}
+
+.syscheck__ok i.ms {
+  color: var(--success);
+}
+
+.syscheck__warn i.ms {
+  color: var(--warning);
+}
+
+.syscheck__bad i.ms {
+  color: var(--error);
+}
+
+.switch-line {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+}
+
+/* The page title and the description under it, and one under each tab */
+.page-title.big {
+  margin: 0;
+  font-size: var(--title-size);
+  line-height: 1.2;
+}
+
+.page-desc,
+.tab-desc {
+  margin: 0;
+  color: var(--ink);
+  font-size: var(--desc-size);
+  font-weight: 500;
+  line-height: 1.45;
+}
+
+.page-desc {
+  margin-top: 6px;
+}
+
+/* This system: four tiles and a line of advice */
+.specs {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.spec {
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface-2);
+}
+
+.spec small {
+  display: block;
+  margin-bottom: 2px;
+  color: var(--ink);
+  font-size: 15px;
+  font-weight: 650;
+}
+
+.spec b {
+  display: block;
+  font-size: 22px;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+}
+
+.spec span {
+  color: var(--ink-2);
+  font-size: 13.5px;
+}
+
+.meter {
+  height: 6px;
+  margin-top: 8px;
+  border-radius: 3px;
+  background: var(--line-2);
+  overflow: hidden;
+}
+
+.meter i {
+  display: block;
+  height: 100%;
+  background: var(--accent);
+}
+
+.advice {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  padding: 10px 12px;
+  border: 1px solid var(--accent-line);
+  border-radius: var(--radius);
+  background: var(--accent-soft);
+  font-size: 14px;
+}
+
+.advice i.ms {
+  color: var(--accent);
+  margin-top: 2px;
+}
+
+.model__cardhead .row-line {
+  flex: none;
+  flex-wrap: nowrap;
+}
+
+.model__cardhead p.sub {
+  margin: 0;
+}
+
+/* The models table */
+.table th.right {
+  text-align: right;
+}
+
+.table tr.in-use td {
+  background: var(--accent-soft);
+}
+
+.pill.ok {
+  background: var(--success-tint);
+  color: var(--text);
+}
+
+.pill.info {
+  background: var(--info-tint);
+  color: var(--text);
+}
+
+.pill.by-hand {
+  background: var(--highlight-tint);
+  color: var(--text);
+}
+
+.under {
+  display: block;
+  margin-top: 2px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.acts {
+  display: flex;
+  gap: 4px;
+  justify-content: flex-end;
+}
+
+/* Actions column header: the word, then its icon buttons; a switch is lit while it is on */
+th .acts {
+  margin-top: 4px;
+}
+
+.ibtn.on {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-text);
+}
+
+/* The retrain section */
+.retrain-line {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.retrain-line {
+  align-items: flex-start;
+}
+
+.retrain-line .state {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 16px;
+}
+
+.states {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.state__label {
+  min-width: 88px;
+}
+
+/* Windows: choices, checks, notes */
+.choices {
+  display: grid;
+  gap: 8px;
+}
+
+.choice {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  cursor: pointer;
+}
+
+.choice:has(input:checked) {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.choice input {
+  margin-top: 4px;
+  accent-color: var(--accent);
+}
+
+.choice b {
+  display: block;
+  font-size: 14px;
+}
+
+.choice span {
+  display: block;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.checks {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 14px;
+}
+
+.checks li {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.checks li > span {
+  flex: 1;
+}
+
+.checks .ms.ok {
+  color: var(--success);
+}
+
+.checks .ms.warn {
+  color: var(--warning);
+}
+
+.checks .ms.bad {
+  color: var(--error);
+}
+
+.checks small {
+  display: block;
+  color: var(--muted);
+  font-size: 12.5px;
+}
+
+.builder {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  padding: 10px 12px;
+  border: 1px dashed var(--line);
+  border-radius: var(--radius);
+  color: var(--text-2);
+  font-size: 13px;
+}
+
+.builder i.ms {
+  color: var(--accent);
+  margin-top: 2px;
+}
+
+@media (max-width: 1040px) {
+  .specs {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 672px) {
+  .specs {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+.more-tools {
+  padding: 10px 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+
+.more-tools > summary {
+  font-weight: 550;
+  color: var(--text-2);
+}
+
+.more-tools[open] > summary {
+  margin-bottom: 10px;
+}
+
+.more-tools > * + * {
+  margin-top: 8px;
+}
+
+/* Add a pair: the choice of where the answer comes from, and the document text to select an answer in */
+.fe-choice {
+  display: flex;                                        /* the choices side by side on one line */
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 28px;
+  margin: 0;
+  padding: 8px 12px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.fe-choice legend {
+  padding: 0 6px;
+  font-weight: 600;
+}
+
+/* Add a pair: the document pickers, the list of highlights and the answer built from them */
+.fe-docrows {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.fe-docrow {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.fe-docrow select {
+  flex: 1;
+  min-width: 0;
+}
+
+.fe-highlights {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.fe-highlight {
+  display: grid;
+  grid-template-columns: minmax(90px, 160px) minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 10px;
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--highlight);
+  border-radius: var(--radius);
+  background: var(--panel);
+}
+
+.fe-highlight b {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 13px;
+}
+
+
+/* Add a pair: the documents beside the highlights, with even space between the icons */
+.dialog.wide:has(.fe-split) {
+  width: min(1060px, 100%);
+}
+
+.fe-split {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+  gap: 20px;
+  align-items: start;
+}
+
+.fe-col {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 0;
+}
+
+.fe-split .fe-vars-head {
+  gap: 12px;
+  min-height: 36px;
+}
+
+.fe-docrow {
+  gap: 10px;
+}
+
+.fe-docrow .ibtn,
+.fe-highlight .ibtn {
+  margin: 0 2px;
+}
+
+.fe-split .fe-preview {
+  max-height: 360px;
+}
+
+@media (max-width: 900px) {
+  .fe-split {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* even space between the heading, the pickers, the document text and the highlights */
+.fe-split {
+  gap: 24px;
+}
+
+.fe-col {
+  gap: 14px;
+}
+
+.fe-col > .fe-vars-head {
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--line-soft);
+}
+
+.fe-docrows {
+  gap: 10px;
+}
+
+.fe-docrow {
+  gap: 12px;
+}
+
+.fe-docrow .ibtn,
+.fe-vars-head .ibtn,
+.fe-highlight .ibtn {
+  margin: 0 3px;
+}
+
+.fe-split .fe-preview {
+  min-height: 140px;
+  padding: 14px 16px;
+}
+
+.fe-highlights {
+  gap: 10px;
+}
+
+/* the buttons at the end of the Highlights heading: Clear all, and the ink highlighter */
+.fe-tools {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* the eye of the document that is shown */
+.fe-docrow .ibtn.on {
+  background: var(--accent-soft);
+  border-color: var(--accent-line);
+}

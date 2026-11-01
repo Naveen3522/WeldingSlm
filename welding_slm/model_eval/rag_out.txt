@@ -1,0 +1,28 @@
+| Condition | n | Correct % | Lenient % | Strict % | Fact recall | Ungrounded-number % | Says 'not in documents' % |
+|---|---|---|---|---|---|---|---|
+| No context, Modelfile prompt (greedy, from main run) | 100 | 14.0 | 15.0 | 3.0 | 0.212 | 15.0 | 0.0 |
+| RAG prompt, empty excerpts | 40 | 22.5 | 22.5 | 10.0 | 0.256 | 10.0 | 0.0 |
+| RAG prompt + gold passage (oracle) | 100 | 66.0 | 66.0 | 47.0 | 0.617 | 1.0 | 2.0 |
+| RAG prompt + WRONG passage | 40 | 10.0 | 10.0 | 5.0 | 0.207 | 22.5 | 2.5 |
+
+Same 40 questions: oracle correct 70.0%, lenient 70.0%, recall 0.664
+oracle answers still not lenient-correct: 34/100
+Q: What does transverse tensile testing prove about a weld joint?
+  G: Joint strength, and the weakest location by fracture position
+  M: 'Transverse tensile testing proves that the joint has sufficient strength to withstand the applied load without failing.\n\nSource: 22_Shared_Physics_of_Fusion_Welding.docx'
+Q: What is the critical parameter to monitor during electroslag welding to ensure process stability?
+  G: Monitor current, voltage and travel continuously — with the pool contained and largely unobservable, these are the process indicators.
+  M: 'The pool depth and the transition region, which are the most sensitive to changes in current, voltage and travel.\n\nSource: 44_Electroslag_and_Electrogas_Welding.docx'
+Q: Why must the oxide layer be removed before welding on stainless steel after plasma cutting?
+  G: Plasma cutting leaves a heavily oxidized edge that must be removed before welding or the joint's corrosion resistance is compromised (Chapter . 24, Se
+  M: 'The oxide layer on stainless steel is heavy and contributes to porosity if heavy. On carbon steel it is generally removed by the welding arc but contributes to porosity if heavy.\n\nSource: 64_Thermal_C'
+Q: What must be tracked as controlled data for electrode attributes when welding coated steels?
+  G: Coating type is one of the electrode attributes that must be tracked as controlled data, not treated as incidental
+  M: 'Coated steels — hot-dip zinc, galvannealed, aluminum-coated, etc.\n\nSource: 02_Materials_Coatings_and_Weldability.docx — 7. Production Process and Material Selection Decision Guide'
+Q: Which friction welding variant is suitable for joining non-axisymmetric parts without requiring rota
+  G: Linear friction welding, orbital friction welding, and radial friction welding are all suitable for joining non-axisymmetric parts without requiring r
+  M: 'Radial friction welding is the answer.\n\n- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - '
+Q: What should be specified in the contract to avoid contractual gaps regarding weld quality?
+  G: Acceptance criteria must be specified at tender. If the contract specified neither a quality level nor a coating standard, the dispute is a contractua
+  M: 'The contract should specify acceptance criteria that cover the governing question of whether the adherent spatter impairs a surface function, and any surface preparation specification for coating.\n\nSo'
+median secs oracle 23.025

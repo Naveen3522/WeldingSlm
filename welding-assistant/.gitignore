@@ -1,0 +1,40 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+.pytest_cache/
+
+# Everything the app creates while it runs: accounts and sessions, the search index, retrain runs, mail outbox, deleted documents, logs
+data/app.db*
+data/admin-credentials.txt*
+data/outbox/
+data/retrain/
+data/probe/
+data/deleted_documents/
+data/manual_passages.json
+data/index/*
+*.sqlite
+*.log
+
+# Kept in git: the hand-checked formulas, the editable settings, and the verified FAQs
+!data/formulas/
+!data/settings/
+!data/index/faq.json
+data/settings/*.bak
+
+# Local configuration and secrets (config.example.json is the template)
+config.json
+.env
+*.key
+
+# Large generated or downloaded files
+*.gguf
+*.safetensors
+*.bin
+
+# Editor and OS
+.vscode/
+.idea/
+Thumbs.db
+.DS_Store

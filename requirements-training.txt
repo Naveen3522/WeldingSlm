@@ -1,0 +1,9 @@
+# Optional: fine-tuning (welding_slm/pipeline/train.py). Needs an NVIDIA GPU.
+# Versions the model was trained with; install a CUDA build of torch first.
+-r requirements-model.txt
+unsloth==2026.9.6
+unsloth_zoo==2026.9.5
+trl==0.24.0
+bitsandbytes
+datasets
+xformers

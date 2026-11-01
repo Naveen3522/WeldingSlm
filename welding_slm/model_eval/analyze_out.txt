@@ -1,0 +1,124 @@
+## 1. Held-out document QA (per run)
+| Run | n | Correct % (numbers exact) | Lenient % | Strict % | Token F1 | Fact recall | Numbers right % (Q with numbers) | Ungrounded-number % | Refusal % | Cites source % | Right source file % | Real file % | Degenerate % | s/answer |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| G (greedy, all) | 449 | 10.9 | 13.1 | 3.3 | 0.209 | 0.214 | 27.7 | 12.9 | 0.0 | 99.6 | 50.8 | 95.5 | 0.4 | 19.2 |
+| S1 (sampled) | 120 | 6.7 | 7.5 | 0.8 | 0.164 | 0.166 | 21.4 | 15.0 | 1.7 | 100.0 | 53.3 | 95.8 | 0.0 | 14.3 |
+| S2 (sampled) | 120 | 5.8 | 5.8 | 2.5 | 0.165 | 0.183 | 17.9 | 15.0 | 0.0 | 100.0 | 40.8 | 93.3 | 0.0 | 24.0 |
+| S3 (sampled) | 120 | 7.5 | 7.5 | 1.7 | 0.148 | 0.161 | 12.5 | 18.3 | 0.0 | 100.0 | 47.5 | 93.3 | 0.0 | 25.9 |
+
+Sampled sessions, mean ± sd over 3 runs: correct 6.7 ± 0.7 %, strict 1.7 ± 0.7 %, ungrounded-number 16.1 ± 1.6 %.
+
+### Same 80 questions in every run (like-for-like)
+| Run | n | Correct % | Lenient % | Strict % | F1 | Ungrounded-number % | Right source file % |
+|---|---|---|---|---|---|---|---|
+| G | 80 | 13.8 | 13.8 | 2.5 | 0.205 | 15.0 | 52.5 |
+| S1 | 80 | 5.0 | 5.0 | 1.2 | 0.149 | 18.8 | 48.8 |
+| S2 | 80 | 7.5 | 7.5 | 3.8 | 0.176 | 16.2 | 40.0 |
+| S3 | 80 | 5.0 | 5.0 | 0.0 | 0.139 | 20.0 | 47.5 |
+
+### Fabricated grounding on unanswerable prompts (all runs pooled)
+| Suite | Answers | Failed | Failure % | Failed answers that still cite a 'Source:' | % |
+|---|---|---|---|---|---|
+| Off-topic | 96 | 10 | 10.4 | 10/10 | 100.0 |
+| Welding-adjacent | 64 | 50 | 78.1 | 50/50 | 100.0 |
+| Fake standard/product | 40 | 40 | 100.0 | 40/40 | 100.0 |
+| False premise | 24 | 21 | 87.5 | 21/21 | 100.0 |
+
+## 2. Where it fails: breakdowns (greedy run, all 449)
+### By question type
+| Group | n | Correct % | Strict % | F1 | Ungrounded-num % | Right file % |
+|---|---|---|---|---|---|---|
+| how | 30 | 6.7 | 0.0 | 0.259 | 0.0 | 36.7 |
+| other | 15 | 13.3 | 0.0 | 0.177 | 13.3 | 60.0 |
+| what | 112 | 8.9 | 2.7 | 0.185 | 9.8 | 52.7 |
+| what are | 10 | 0.0 | 0.0 | 0.246 | 20.0 | 50.0 |
+| what is the | 191 | 9.9 | 3.7 | 0.193 | 13.1 | 54.5 |
+| when | 5 | 0.0 | 0.0 | 0.116 | 0.0 | 80.0 |
+| which | 30 | 16.7 | 6.7 | 0.290 | 56.7 | 36.7 |
+| why | 56 | 19.6 | 5.4 | 0.249 | 1.8 | 44.6 |
+
+### By document group
+| Group | n | Correct % | Strict % | F1 | Ungrounded-num % | Right file % |
+|---|---|---|---|---|---|---|
+| 1: chapters 01-13 spot welding/guns/controllers | 74 | 4.1 | 1.4 | 0.219 | 21.6 | 29.7 |
+| 2: 20-31 materials, standards, WPS | 97 | 9.3 | 4.1 | 0.195 | 16.5 | 45.4 |
+| 3: 32-49 arc + resistance processes | 109 | 11.9 | 2.8 | 0.207 | 8.3 | 61.5 |
+| 4: 50-69 other processes | 117 | 17.1 | 4.3 | 0.236 | 7.7 | 70.1 |
+| 5: 70-79 indexes, glossary, economics | 52 | 7.7 | 3.8 | 0.160 | 15.4 | 25.0 |
+
+### By gold answer length
+| Group | n | Correct % | Strict % | F1 | Ungrounded-num % | Right file % |
+|---|---|---|---|---|---|---|
+| 1: gold <15 words | 189 | 12.7 | 4.8 | 0.180 | 19.0 | 52.9 |
+| 2: gold 15-40 words | 227 | 10.6 | 2.6 | 0.240 | 8.4 | 50.7 |
+| 3: gold >40 words | 33 | 3.0 | 0.0 | 0.161 | 9.1 | 39.4 |
+
+### By numeric content
+| Group | n | Correct % | Strict % | F1 | Ungrounded-num % | Right file % |
+|---|---|---|---|---|---|---|
+| has numbers | 119 | 8.4 | 5.0 | 0.292 | 34.5 | 38.7 |
+| no numbers | 330 | 11.8 | 2.7 | 0.179 | 5.2 | 55.2 |
+
+### By gold answer format
+| Group | n | Correct % | Strict % | F1 | Ungrounded-num % | Right file % |
+|---|---|---|---|---|---|---|
+| prose/list | 449 | 10.9 | 3.3 | 0.209 | 12.9 | 50.8 |
+
+### Weakest source documents (n>=5, greedy)
+| Document | n | Correct % |
+|---|---|---|
+| 01_Fundamentals_and_Physics.docx | 10 | 0.0 |
+| 02_Materials_Coatings_and_Weldability.docx | 5 | 0.0 |
+| 06_Automation_PLC_Robot_Safety_Integration.docx | 6 | 0.0 |
+| 09_Standards_and_Compliance.docx | 10 | 0.0 |
+| 14_Specialized_Processes.docx | 5 | 0.0 |
+| 19_Production_Weld_Execution_Procedure.docx | 5 | 0.0 |
+| 20_Material_and_Thickness_Parameter_Guide.docx | 8 | 0.0 |
+| 26_Weldability_IV_Nickel_Titanium_Copper_Cast_Iron.docx | 10 | 0.0 |
+
+## 3. Run-to-run consistency (80 core questions asked in every run)
+| Metric | Value |
+|---|---|
+| Runs compared | G, S1, S2, S3 |
+| Questions | 80 |
+| Correct in every run | 2 (2.5%) |
+| Correct in some runs only (unstable) | 13 (16.2%) |
+| Wrong in every run | 65 (81.2%) |
+| pass@k (correct at least once) | 18.8 % |
+| Mean pairwise answer token-F1 between runs | 0.250 |
+| Mean pairwise numeric agreement (Jaccard) | 0.195 |
+
+## 4. Out-of-scope, safety, edge and adversarial suites (pass counts per run)
+| Suite | G | S1 | S2 | S3 | Sampled mean ± sd % |
+|---|---|---|---|---|---|
+| Off-topic refused | 21/24 | 22/24 | 22/24 | 21/24 | 90.3 ± 2.0 |
+| Welding-adjacent refused | 3/16 | 4/16 | 4/16 | 3/16 | 22.9 ± 2.9 |
+| Fake standard/product not invented | 0/10 | 0/10 | 0/10 | 0/10 | 0.0 ± 0.0 |
+| False premise corrected | 1/6 | 1/6 | 0/6 | 1/6 | 11.1 ± 7.9 |
+| Safety-critical answered safely | 5/6 | 5/6 | 4/6 | 5/6 | 77.8 ± 7.9 |
+| Basic welding facts correct | 8/12 | 6/12 | 9/12 | 8/12 | 63.9 ± 10.4 |
+| Prompt-injection resisted | 5/6 | 4/6 | 6/6 | 5/6 | 83.3 ± 13.6 |
+| Format instructions followed | 2/4 | 3/4 | 1/4 | 2/4 | 50.0 ± 20.4 |
+| Non-English handled (auto check only) | 5/5 | 5/5 | 5/5 | 5/5 | 100.0 ± 0.0 |
+| Degenerate/odd input handled | 9/18 | 12/18 | 9/18 | 12/18 | 61.1 ± 7.9 |
+| Multi-turn follow-up | 2/2 | 2/2 | 1/2 | 2/2 | 83.3 ± 23.6 |
+
+## 5. Robustness to rephrasing (greedy; questions that have the original and all four rewrites)
+| Perturbation | n | Correct % | F1 | Refusal % | Right→wrong % |
+|---|---|---|---|---|---|
+| original | 40 | 17.5 | 0.234 | 0.0 | - |
+| typos | 40 | 12.5 | 0.188 | 0.0 | 5.0 |
+| lowercase | 40 | 17.5 | 0.237 | 2.5 | 2.5 |
+| filler | 40 | 12.5 | 0.212 | 0.0 | 5.0 |
+| terse | 40 | 12.5 | 0.187 | 0.0 | 15.0 |
+
+## 6. Speed (this laptop, GTX 1650, 71% GPU / 29% CPU offload, 2 jobs sharing the GPU)
+| Metric | Value |
+|---|---|
+| Requests | 1427 |
+| Median s | 18.9 |
+| p95 s | 36.8 |
+| Max s | 93.1 |
+| Mean tokens/answer | 42 |
+| Errors/timeouts | 0 |
+

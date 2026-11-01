@@ -1,0 +1,24 @@
+train rows 9086 kinds Counter({'doc': 8547, 'refusal': 539})
+answer words: median 18.0 p10 6 p90 36 max 179
+answers <8 words: 1433  >100 words: 12
+answers starting lowercase (possible mid-word/mid-sentence fragment): 128 (1.4%)
+answers with ' | ' table fragments: 7
+answers containing 'Source:' line: 8547
+refusal-style answers: 648
+answers w/ mojibake char: 0
+duplicate questions: 515
+duplicate q+a: 515
+questions with >1 distinct answer: 0
+train answers with numbers not in their source chunk: 35/3000
+   ('What is the deposition rate for SMAW (111) compared to GMAW (131/135)?', 'SMAW (111) has a low deposition rate, while GMAW (1.31/135) has a high deposition rate.', ['1.31'])
+   ('What two ISO standards govern electrode hardware directly?', 'ISO 5182 and ISO  5821', ['5182', '5821'])
+   ('Which standard specifies the minimum preheat temperature for welding 1/2 inch thick carbon steel plates?', 'The minimum preheat temperature is specified in AWS D11.1-2022 Section 3.1.2.1 as 100°C.', ['100', '2022', '3.1'])
+   ('What standard defines the six-group structure and reference numbering used in this chapter?', 'ISO 652.1 — Welding and allied processes — Classification of geometric imperfections in metallic materials — Part 1: Fus', ['652.1'])
+   ('What is the scope boundary for organic and primer coatings according to ISO 14373?', 'ISO 143:73 explicitly excludes organic-coated or primer-coated steel from its scope [S6].', ['143', '73'])
+chunks covered 2075 of 2092 ; q/chunk median 4
+rows per doc min/median/max 45 111.5 539 docs 80
+least-covered docs: [('11_Process_Monitoring_and_Adaptive_Control.docx', 66), ('17_Traceability_and_Digital_Thread.docx', 66), ('10_Testing_and_Quality_Verification.docx', 63), ('07_Cooling_and_Utilities.docx', 56), ('13_Preventive_Maintenance_and_Electrode_Life.docx', 52), ('15_Glossary.docx', 45)]
+question openers: [('what is', 3755), ('why is', 387), ('how does', 387), ('what are', 296), ('why does', 293), ('what does', 225), ('which standard', 222), ('how do', 176), ('what specific', 175), ('what must', 130)]
+eval chunks also in train: 445 / 449
+eval q ↔ nearest train q on same chunk (Jaccard): median 0.27  >0.6: 25
+eval gold answers verbatim in train: 29

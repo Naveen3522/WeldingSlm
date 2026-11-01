@@ -1,0 +1,30 @@
+{
+ "dropped: starts mid-sentence": 80,
+ "dropped: under 8 words": 940,
+ "dropped: held-out (blind test) document": 1440,
+ "dropped: number not in the source passage": 74,
+ "clean document rows": 6462,
+ "dev documents": [
+  "03_Electrodes_and_Tooling.docx",
+  "04_Power_Systems_Transformers_and_Controllers.docx",
+  "25_Weldability_III_Aluminium_Alloys.docx",
+  "51_Resistance_Welding_Family_Selection.docx",
+  "62_Magnetic_Pulse_Welding.docx",
+  "78_Known_Gaps_and_Boundaries_of_This_Reference_Set.docx"
+ ],
+ "train rows": {
+  "gold": 1950,
+  "contrastive": 450,
+  "wrong_passage": 450,
+  "empty": 150
+ },
+ "dev rows": {
+  "gold": 195,
+  "contrastive": 45,
+  "wrong_passage": 45,
+  "empty": 15
+ },
+ "train documents": 60,
+ "held-out (blind) documents": 13,
+ "approx tokens per train row": 713
+}

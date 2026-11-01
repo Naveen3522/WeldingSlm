@@ -1,0 +1,16 @@
+{
+  "password": {
+    "pattern": "^(?=.*[A-Z])(?=.*[0-9\\W_])(?=.*?(.).*?(?!\\1)(.).*?(?!\\1|\\2)(.).*?(?!\\1|\\2|\\3)(.)).{8,64}$",
+    "message": "Password needs 8 or more characters, one uppercase letter, and a number or symbol."
+  },
+  "email": {
+    "pattern": "^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$",
+    "required": "Enter your email.",
+    "message": "Email doesn't match the format name@example.com."
+  },
+  "username": {
+    "pattern": "^[A-Za-z0-9._-]{3,32}$",
+    "required": "Enter a username.",
+    "message": "Username: 3 to 32 letters, digits, dot, dash or underscore."
+  }
+}

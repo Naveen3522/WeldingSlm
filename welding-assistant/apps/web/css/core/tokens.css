@@ -1,0 +1,137 @@
+/* Colour and size tokens: the approved shared colour rule.
+   Light = earth tones, dark = sand and deep teal. The theme follows the system unless data-theme is set on <html>.
+   This is the only file that holds colours: pages and components read these variables. "derived" values are mixes of approved ones. */
+
+:root {
+  --page: #f7f1e8;
+  --panel: #ffffff;
+  --panel-2: color-mix(in srgb, #1c1b1a 4%, #ffffff);          /* derived: a quiet band inside a panel */
+  --line: #cccac7;
+  --line-soft: color-mix(in srgb, #cccac7 55%, #ffffff);        /* derived: a lighter rule */
+  --text: #1c1b1a;
+  --text-2: #4a4741;
+  --muted: #4a4741;
+
+  --accent: #224228;                                            /* buttons, the question bubble: forest */
+  --accent-text: #ffffff;
+  --accent-soft: color-mix(in srgb, #224228 12%, #ffffff);
+  --accent-line: color-mix(in srgb, #224228 45%, #ffffff);
+
+  --success: #007a5a;
+  --info: #337ab7;
+  --error: #cc4117;
+  --warning: #af751b;
+  /* notices: each status on its own tint, 26% in light mode and 34% in dark (derived) */
+  --success-tint: color-mix(in srgb, var(--success) 26%, var(--panel));
+  --info-tint: color-mix(in srgb, var(--info) 26%, var(--panel));
+  --error-tint: color-mix(in srgb, var(--error) 26%, var(--panel));
+  --warning-tint: color-mix(in srgb, var(--warning) 26%, var(--panel));
+
+  --highlight: #ddbe78;
+  --highlight-tint: color-mix(in srgb, var(--highlight) 40%, var(--panel));
+
+  --dot-ready: #22c55e;
+  --dot-training: #f59e0b;
+  --dot-offline: #ef4444;
+  --dot-checking: #9aa3a0;
+
+  --shadow: 0 1px 2px rgba(20, 20, 30, 0.05), 0 6px 20px rgba(20, 20, 30, 0.05);
+  --radius: 8px;
+  --control: 40px;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 16px;
+  --space-4: 24px;
+  --space-5: 32px;
+  --space-6: 48px;
+  --title-size: 28px;                                           /* every page title */
+  --card-title-size: 20px;                                      /* every card / section heading */
+  --desc-size: 18px;                                            /* the line under a page title */
+  --font: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+
+  /* the names the older stylesheets use, until each page is moved to the names above */
+  --bg: var(--page);
+  --surface: var(--panel);
+  --surface-2: var(--panel-2);
+  --ink: var(--text);
+  --ink-2: var(--text-2);
+  --line-2: var(--line-soft);
+  --accent-ink: var(--accent-text);
+  --ok: var(--success);
+  --blue: var(--info);
+  --red: var(--error);
+  --amber: var(--warning);
+  --ok-soft: var(--success-tint);
+  --blue-soft: var(--info-tint);
+  --red-soft: var(--error-tint);
+  --amber-soft: var(--warning-tint);
+  --highlight-line: var(--warning);
+  --mark: var(--highlight);
+  --code: var(--panel-2);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --page: #0a1a1a;
+    --panel: #1a2a2a;
+    --panel-2: color-mix(in srgb, #fffaf0 5%, #1a2a2a);
+    --line: #3a5252;                                             /* derived */
+    --line-soft: color-mix(in srgb, #3a5252 55%, #1a2a2a);
+    --text: #fffaf0;
+    --text-2: color-mix(in srgb, #fffaf0 82%, #1a2a2a);
+    --muted: #a0a0a0;
+
+    --accent: #a4d4c5;                                           /* mint, with dark text */
+    --accent-text: #0a1a1a;
+    --accent-soft: color-mix(in srgb, #a4d4c5 14%, #1a2a2a);
+    --accent-line: color-mix(in srgb, #a4d4c5 45%, #1a2a2a);
+
+    --success: #a4d4c5;
+    --info: #337ab7;
+    --error: #ff6b5a;
+    --warning: #e8b94a;
+    --success-tint: color-mix(in srgb, var(--success) 34%, var(--panel));
+    --info-tint: color-mix(in srgb, var(--info) 34%, var(--panel));
+    --error-tint: color-mix(in srgb, var(--error) 34%, var(--panel));
+    --warning-tint: color-mix(in srgb, var(--warning) 34%, var(--panel));
+
+    --highlight: #6b5a1c;                                        /* derived */
+    --highlight-tint: color-mix(in srgb, var(--highlight) 60%, var(--panel));
+    --shadow: none;
+  }
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  --page: #0a1a1a;
+  --panel: #1a2a2a;
+  --panel-2: color-mix(in srgb, #fffaf0 5%, #1a2a2a);
+  --line: #3a5252;
+  --line-soft: color-mix(in srgb, #3a5252 55%, #1a2a2a);
+  --text: #fffaf0;
+  --text-2: color-mix(in srgb, #fffaf0 82%, #1a2a2a);
+  --muted: #a0a0a0;
+
+  --accent: #a4d4c5;
+  --accent-text: #0a1a1a;
+  --accent-soft: color-mix(in srgb, #a4d4c5 14%, #1a2a2a);
+  --accent-line: color-mix(in srgb, #a4d4c5 45%, #1a2a2a);
+
+  --success: #a4d4c5;
+  --info: #337ab7;
+  --error: #ff6b5a;
+  --warning: #e8b94a;
+  --success-tint: color-mix(in srgb, var(--success) 34%, var(--panel));
+  --info-tint: color-mix(in srgb, var(--info) 34%, var(--panel));
+  --error-tint: color-mix(in srgb, var(--error) 34%, var(--panel));
+  --warning-tint: color-mix(in srgb, var(--warning) 34%, var(--panel));
+
+  --highlight: #6b5a1c;
+  --highlight-tint: color-mix(in srgb, var(--highlight) 60%, var(--panel));
+  --shadow: none;
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+}

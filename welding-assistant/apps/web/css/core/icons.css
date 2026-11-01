@@ -1,0 +1,41 @@
+/* Icons are Google Material Symbols (Apache 2.0), served from /vendor/material-symbols as a font cut down to the icons the app uses.
+   An icon is <i class="ms" data-icon="delete">&#xe872;</i>: one character of that font, so it takes the text colour and size. Add "fill" for the filled form. */
+
+@font-face {
+  font-family: "Material Symbols Outlined";
+  font-style: normal;
+  font-weight: 100 700;
+  font-display: block;
+  src: url("/vendor/material-symbols/MaterialSymbols.woff2") format("woff2");
+}
+
+i.ms {
+  font-family: "Material Symbols Outlined";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.25em;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  white-space: nowrap;
+  display: inline-block;
+  width: 1em;               /* a fixed square, so the icon's name never takes text width or overlaps its neighbour */
+  overflow: hidden;
+  vertical-align: -0.22em;
+  -webkit-font-smoothing: antialiased;
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+}
+
+i.ms.fill {
+  font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 0, "opsz" 24;
+}
+
+i.ms.spin {
+  animation: ms-spin 1s linear infinite;
+}
+
+@keyframes ms-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

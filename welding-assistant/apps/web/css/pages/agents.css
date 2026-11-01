@@ -1,0 +1,241 @@
+/* The Agents page: one card per agent. A card is not a chat: it holds the agent's basic questions, a few dropdowns that build a question, and a box for your own words. Asking opens the
+   main chat with that agent chosen. */
+
+.agents-page {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  padding: 24px 20px 40px;
+}
+
+.agents-inner {
+  max-width: none;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.agents-intro h1 {
+  margin: 0 0 6px;
+  font-size: var(--title-size);
+}
+
+.agents-intro p {
+  margin: 0;
+  color: var(--ink);
+  font-size: var(--desc-size);
+  font-weight: 500;
+  line-height: 1.45;
+}
+
+.agent-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
+  align-items: start;
+  gap: 16px;
+}
+
+.agent-card {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+
+.agent-card__head {
+  display: grid;
+  grid-template-columns: 46px minmax(0, 1fr);
+  align-items: center;
+  gap: 8px 14px;
+}
+
+.agent-card__icon {
+  flex: none;
+  width: 46px;
+  height: 46px;
+  display: grid;
+  place-items: center;
+  border-radius: var(--radius);
+  background: var(--accent);
+  color: var(--accent-ink);
+  font-size: 24px;
+}
+
+.agent-card__head h2 {
+  margin: 0;
+  font-size: var(--card-title-size);
+}
+
+.agent-card__head p {
+  grid-column: 1 / -1;
+  margin: 0;
+  color: var(--ink);
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.45;
+}
+
+.agent-card h3 {
+  margin: 0 0 6px;
+  font-size: 12px;
+  font-weight: 650;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.starters {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.starters button {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding: 8px 12px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  text-align: left;
+  font-size: 14px;
+  line-height: 1.35;
+}
+
+.starters button:hover {
+  border-color: var(--accent-line);
+  background: var(--accent-soft);
+}
+
+.starters button i.ms {
+  flex: none;
+  color: var(--accent);
+}
+
+.more {
+  margin-top: 6px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+
+.more > summary {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  list-style: none;
+  font-size: 14px;
+  font-weight: 550;
+  color: var(--accent);
+  cursor: pointer;
+}
+
+.more > summary::-webkit-details-marker {
+  display: none;
+}
+
+.more > summary .count {
+  margin-left: auto;
+  color: var(--muted);
+  font-weight: 400;
+  font-size: 12.5px;
+}
+
+.more > summary i.chev {
+  transition: transform 0.12s;
+}
+
+.more[open] > summary i.chev {
+  transform: rotate(180deg);
+}
+
+.more .starters {
+  padding: 0 8px 8px;
+  max-height: 232px;
+  overflow-y: auto;
+}
+
+.more .find {
+  display: block;
+  margin: 0 8px 8px;
+  width: calc(100% - 16px);
+}
+
+.guided {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.guided .wide {
+  grid-column: 1 / -1;
+}
+
+.guided .field select,
+.guided .field input {
+  width: 100%;
+}
+
+.compose {
+  display: flex;
+  gap: 8px;
+  align-items: flex-end;
+}
+
+.compose .field {
+  flex: 1;
+}
+
+.compose .field input {
+  width: 100%;
+}
+
+.agent-send {
+  flex: none;
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  border: 0;
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--accent-ink);
+  font-size: 19px;
+}
+
+.made {
+  margin: 0;
+  padding: 8px 12px;
+  border-left: 3px solid var(--accent);
+  background: var(--accent-soft);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  font-size: 14px;
+}
+
+.made small {
+  display: block;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.made.empty b {
+  color: var(--muted);
+  font-weight: 400;
+}
+
+.guided .btn[disabled] {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+@media (max-width: 672px) {
+  .guided {
+    grid-template-columns: 1fr;
+  }
+}

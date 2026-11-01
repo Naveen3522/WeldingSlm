@@ -1,0 +1,48 @@
+/* The text of a document to select a passage in, with the passage marked: the pair window and the formula source picker */
+.fe-preview {
+  max-height: 260px;
+  overflow-y: auto;
+  padding: 10px 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--panel-2);
+  font-size: 13.5px;
+  user-select: text;
+}
+
+.fe-preview h4 {
+  margin: 10px 0 4px;
+}
+
+.fe-preview p,
+.fe-preview li {
+  margin: 4px 0;
+}
+
+.fe-preview__table {
+  margin: 6px 0;
+  padding-left: 8px;
+  border-left: 3px solid var(--accent-line);
+}
+
+/* The ink highlighter in the document preview: the highlighted text, and the one button that highlights or takes it off */
+.fe-mark {
+  padding: 1px 0;
+  border-radius: 3px;
+  background: #ffe27a;                                  /* a marker yellow in both themes, with dark text, so a highlight is easy to see */
+  box-shadow: inset 0 -2px 0 #e0b400;
+  color: #1c1b1a;
+}
+
+.fe-ink {
+  gap: 6px;
+}
+
+.fe-ink.on {
+  background: var(--accent-soft);
+  border-color: var(--accent-line);
+}
+
+.fe-ink:disabled {
+  opacity: 0.5;
+}

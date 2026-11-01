@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Permissions version="2">
+  <Screen id="1" name="Chat (Ask)" read="1" write="1">
+    <Controls>
+      <Control id="1.1" name="Ask a question" read="1" write="1" />
+      <Control id="1.2" name="AI summary button" read="1" write="1" />
+      <Control id="1.3" name="Download answer as Word" read="1" write="1" />
+      <Control id="1.4" name="Generate a Word file from a template" read="1" write="1" />
+    </Controls>
+  </Screen>
+  <Screen id="12" name="Agents" read="1" write="1">
+    <Controls>
+      <Control id="12.1" name="Ask an agent" read="1" write="1" />
+    </Controls>
+  </Screen>
+  <Screen id="2" name="Library" read="1" write="1">
+    <Controls>
+      <Control id="2.1" name="Open a document" read="1" write="1" />
+      <Control id="2.2" name="Add documents" read="5" write="5" />
+      <Control id="2.3" name="Delete documents" read="5" write="5" />
+      <Control id="2.4" name="Reindex documents (deletes the question pairs written by hand)" read="5" write="5" />
+    </Controls>
+  </Screen>
+  <Screen id="3" name="Formulas" read="1" write="1">
+    <Controls>
+      <Control id="3.1" name="Calculate" read="1" write="1" />
+      <Control id="3.2" name="Suggest a formula" read="1" write="1" />
+      <Control id="3.3" name="Add or edit a formula" read="5" write="5" />
+      <Control id="3.4" name="Approve a suggestion" read="5" write="5" />
+      <Control id="3.5" name="Remove a formula" read="5" write="5" />
+    </Controls>
+  </Screen>
+  <Screen id="4" name="Drafts" read="1" write="1">
+    <Controls>
+      <Control id="4.1" name="New draft (+)" read="1" write="1" />
+      <Control id="4.2" name="Edit a draft" read="1" write="1" />
+      <Control id="4.3" name="Save a draft" read="1" write="1" />
+      <Control id="4.4" name="Download Word" read="1" write="1" />
+      <Control id="4.5" name="Delete a draft" read="10" write="10" />
+      <Control id="4.6" name="Insert or delete rows and columns in a draft" read="5" write="5" />
+    </Controls>
+  </Screen>
+  <Screen id="5" name="Templates" read="5" write="5">
+    <Controls>
+      <Control id="5.1" name="Edit a template (rows and columns)" read="5" write="5" />
+      <Control id="5.2" name="Save a template" read="5" write="5" />
+      <Control id="5.3" name="Download a template" read="5" write="5" />
+      <Control id="5.4" name="Upload a Word table" read="5" write="5" />
+      <Control id="5.5" name="New template" read="5" write="5" />
+      <Control id="5.6" name="Remove a template" read="5" write="5" />
+    </Controls>
+  </Screen>
+  <Screen id="6" name="Models" read="5" write="5">
+    <Controls>
+      <Control id="6.1" name="View models and training" read="5" write="5" />
+      <Control id="6.2" name="Use this model" read="10" write="10" />
+      <Control id="6.3" name="Rename or delete a model" read="10" write="10" />
+      <Control id="6.4" name="Full retrain" read="10" write="10" />
+      <Control id="6.5" name="Test the training setup" read="10" write="10" />
+    </Controls>
+  </Screen>
+  <Screen id="7" name="Question pairs" read="5" write="5">
+    <Controls>
+      <Control id="7.1" name="Approve, reject, edit" read="5" write="5" />
+      <Control id="7.2" name="Add a pair" read="5" write="5" />
+      <Control id="7.3" name="Check and test" read="5" write="5" />
+    </Controls>
+  </Screen>
+  <Screen id="8" name="Users: People" read="10" write="10">
+    <Controls>
+      <Control id="8.1" name="Change a role" read="10" write="10" />
+      <Control id="8.2" name="Reset password" read="10" write="10" />
+      <Control id="8.3" name="Remove a person" read="10" write="10" />
+    </Controls>
+  </Screen>
+  <Screen id="9" name="Users: Roles" read="10" write="10">
+    <Controls>
+      <Control id="9.1" name="Add, edit, delete roles" read="10" write="10" />
+    </Controls>
+  </Screen>
+  <Screen id="10" name="Users: Permissions" read="10" write="10">
+    <Controls>
+      <Control id="10.1" name="Save permissions" read="10" write="10" />
+    </Controls>
+  </Screen>
+  <Screen id="11" name="Activity" read="10" write="10">
+    <Controls>
+      <Control id="11.1" name="Export for Excel" read="10" write="10" />
+      <Control id="11.2" name="Clear activity" read="10" write="10" />
+    </Controls>
+  </Screen>
+  <Screen id="13" name="My questions" read="1" write="1">
+    <Controls>
+      <Control id="13.1" name="Send a question and answer for approval" read="1" write="1" />
+    </Controls>
+  </Screen>
+</Permissions>

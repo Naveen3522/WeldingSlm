@@ -1,0 +1,82 @@
+/* The administration pages (Users, Model management, Activity): the page frame, a title row and the sections inside. */
+
+.admin-page {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  padding: 22px 24px 48px;
+}
+
+.admin-inner {
+  max-width: none;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.page-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.page-head h1 {
+  margin: 0;
+  font-size: var(--title-size);
+}
+
+.page-head .tools {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+
+.section h2 {
+  margin: 0;
+  font-size: var(--card-title-size);
+}
+
+.section .sub {
+  margin: -6px 0 0;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.row-line {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+progress {
+  width: 100%;
+  height: 10px;
+  accent-color: var(--accent);
+}
+
+@media (max-width: 700px) {
+  .admin-page {
+    padding: 16px 12px 40px;
+  }
+}
+
+.page-title {
+  margin: 0;
+  font-size: var(--title-size);
+  line-height: 1.2;
+}

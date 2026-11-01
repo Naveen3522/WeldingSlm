@@ -1,0 +1,119 @@
+/* The Library and Chat history panels: a search box, a list, and (Library) the add and delete buttons. */
+
+.dd {
+  width: min(440px, calc(100vw - 24px));
+  max-height: min(72vh, 580px);
+  overflow: hidden;
+}
+
+.dd-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px;
+}
+
+.search {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+}
+
+.search i {
+  position: absolute;
+  top: 50%;
+  left: 11px;
+  transform: translateY(-50%);
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.search input,
+.search input[type="search"] {
+  width: 100%;
+  padding: 8px 11px 8px 32px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface-2);
+  font: inherit;
+  font-size: 13.5px;
+}
+
+.dd-list {
+  overflow-y: auto;
+  padding: 0 6px 8px;
+}
+
+.row {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  border: 0;
+  border-radius: 8px;
+  background: none;
+  padding: 8px 10px;
+  text-align: left;
+  font-size: 13.5px;
+}
+
+.row:hover,
+.row:focus-visible {
+  background: var(--accent-soft);
+}
+
+.row .row-text {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.row small {
+  flex: none;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.row input[type="checkbox"] {
+  flex: none;
+}
+
+.dd-empty {
+  padding: 18px 14px;
+  color: var(--muted);
+  font-size: 13.5px;
+}
+
+.dd-note {
+  padding: 8px 14px;
+  border-top: 1px solid var(--line-2);
+  font-size: 12.5px;
+  color: var(--ink-2);
+}
+
+.dd-note.ok {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.dd-note.bad {
+  background: var(--red-soft);
+  color: var(--red);
+}
+
+.dd-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 8px 12px;
+  border-top: 1px solid var(--line-2);
+  font-size: 12.5px;
+  color: var(--muted);
+}
+
+.page-head .search {
+  min-width: 280px;
+}

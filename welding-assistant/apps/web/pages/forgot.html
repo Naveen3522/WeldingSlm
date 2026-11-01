@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Forgot password - Weld Assist</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <script src="/js/core/theme-init.js"></script>
+  <link rel="stylesheet" href="/css/core/icons.css">
+  <link rel="stylesheet" href="/css/core/tokens.css">
+  <link rel="stylesheet" href="/css/core/base.css">
+  <link rel="stylesheet" href="/css/components/form.css">
+  <link rel="stylesheet" href="/css/components/notice.css">
+  <link rel="stylesheet" href="/css/components/field-note.css">
+  <link rel="stylesheet" href="/css/pages/auth.css">
+</head>
+<body>
+  <main class="auth">
+    <form class="auth-card" id="authForm" novalidate>
+      <div class="auth-brand"><span class="mark"><i class="ms" data-icon="bolt" aria-hidden="true">&#xea0b;</i></span><b>Weld Assist</b></div>
+      <h1 id="authTitle">Forgot password</h1>
+      <p class="auth-note" id="authNote">Enter the recovery key saved in your profile.</p>
+      <div id="stepOne" class="auth-step">
+        <label class="field"><span>Email</span><input id="authEmail" type="email" autocomplete="username" spellcheck="false"></label>
+        <label class="field"><span>Recovery key</span><input id="authKey" type="text" autocomplete="off" spellcheck="false" placeholder="XXXX-XXXX-XXXX-XXXX"></label>
+      </div>
+      <div id="stepTwo" class="auth-step" hidden>
+        <label class="field"><span>New password</span><input id="authNew" type="password" autocomplete="new-password" spellcheck="false" placeholder="Enter a password"></label>
+        <label class="field"><span>Confirm new password</span><input id="authNew2" type="password" autocomplete="new-password" spellcheck="false" placeholder="Type it again"></label>
+      </div>
+      <div class="auth-error" id="authError" role="alert"></div>
+      <div id="authHelp"></div>
+      <div class="auth-actions">
+        <button class="btn primary auth-submit" id="authSubmit" type="submit">Continue</button>
+      </div>
+      <p class="auth-switch"><a href="/login.html">Back to sign in</a></p>
+    </form>
+  </main>
+  <script type="module" src="/js/pages/forgot.js"></script>
+</body>
+</html>

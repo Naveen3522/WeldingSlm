@@ -1,0 +1,12 @@
+/* The small line under a field: what the field needs (a hint), turning into the problem when what is typed does not fit. */
+
+.field-note {
+  min-height: 1.3em;
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--muted);
+}
+
+.field-note--bad {
+  color: var(--error);
+}

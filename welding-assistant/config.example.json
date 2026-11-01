@@ -1,0 +1,9 @@
+{
+  "mode": "local",
+  "understanding_url": "http://127.0.0.1:8801",
+  "answer_url": "http://127.0.0.1:8802",
+  "default_model": "welding-slm",
+  "use_faq": true,
+  "use_engine": true,
+  "legacy_fallback": true
+}

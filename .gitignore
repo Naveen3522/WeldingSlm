@@ -1,0 +1,38 @@
+# Python environments and caches
+.venv/
+venv/
+venv_gguf/
+__pycache__/
+*.pyc
+.pytest_cache/
+unsloth_compiled_cache/
+
+# Editor / OS
+.vscode/
+.idea/
+Thumbs.db
+.DS_Store
+
+# llama.cpp is cloned by the setup steps in README.md (tag b11056), not stored here
+welding_slm/llama.cpp/
+
+# Large model files: too big for GitHub, rebuilt from welding_slm/lora_adapter (see README.md)
+*.gguf
+welding_slm/merged_16bit/
+welding_slm/build/
+welding_slm/checkpoints/
+welding_slm/runs/
+welding_slm/v2/checkpoints/
+*.pt
+*.pth
+*.bin
+# the LoRA adapter is the one weights file that IS kept
+*.safetensors
+!welding_slm/lora_adapter/adapter_model.safetensors
+
+# Logs and scratch output
+*.log
+*.err
+
+# Secrets / local config (the app has its own .gitignore for data/ and config.json)
+.env

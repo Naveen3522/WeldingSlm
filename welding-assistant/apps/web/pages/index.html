@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Ask - Weld Assist</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <script src="/js/core/theme-init.js"></script>
+  <link rel="stylesheet" href="/css/core/icons.css">
+  <link rel="stylesheet" href="/css/core/tokens.css">
+  <link rel="stylesheet" href="/css/core/base.css">
+  <link rel="stylesheet" href="/css/components/navbar.css">
+  <link rel="stylesheet" href="/css/components/menu.css">
+  <link rel="stylesheet" href="/css/components/form.css">
+  <link rel="stylesheet" href="/css/components/dialog.css">
+  <link rel="stylesheet" href="/css/components/table.css">
+  <link rel="stylesheet" href="/css/components/retrain-bar.css">
+  <link rel="stylesheet" href="/css/components/notice.css">
+  <link rel="stylesheet" href="/css/components/history-panel.css">
+  <link rel="stylesheet" href="/css/components/answer-block.css">
+  <link rel="stylesheet" href="/css/pages/viewer.css">
+  <link rel="stylesheet" href="/css/pages/ask.css">
+  <link rel="stylesheet" href="/css/pages/chat.css">
+  <link rel="stylesheet" href="/css/pages/sources.css">
+</head>
+<body>
+  <div class="app">
+    <header id="top"></header>
+    <div class="retrain-bar" id="retrainBar" hidden></div>
+    <div class="body">
+      <aside class="history-col" id="history" aria-label="Your questions"></aside>
+
+      <div class="center">
+      <main class="chat" id="scroller">
+        <div class="thread" id="thread">
+          <section class="hero" id="hero">
+            <h1>Ask your welding documents</h1>
+            <p>Get a clear answer with the exact passages behind it, so every value can be checked.</p>
+            <div class="pop" id="pop"></div>
+          </section>
+        </div>
+      </main>
+      <footer class="dock">
+        <div class="composer-wrap">
+          <div class="dock__notice" id="banner" hidden></div>
+          <form class="composer" id="form">
+            <button class="ibtn history-toggle" id="historyToggle" type="button" title="Show your questions" aria-label="Show your questions"><i class="ms" data-icon="history" aria-hidden="true">&#xe8b3;</i></button>
+            <textarea id="q" rows="1" placeholder="Ask about a process, parameter, standard or defect" aria-label="Your question" autofocus></textarea>
+            <button class="send" id="send" type="submit" aria-label="Send" title="Send" disabled><i class="ms" data-icon="arrow_upward" aria-hidden="true">&#xe5d8;</i></button>
+          </form>
+        </div>
+        <div class="fine">Answers can be wrong. Check the sources.</div>
+      </footer>
+      </div>
+
+      <aside class="panel" id="panel" aria-label="Sources">
+        <div class="panel-head">
+          <h2>Sources</h2>
+          <small id="srcSub"></small>
+          <button class="panel-close" id="panelClose" type="button" aria-label="Close sources"><i class="ms" data-icon="close" aria-hidden="true">&#xe5cd;</i></button>
+        </div>
+        <div class="panel-body" id="panelBody">
+          <div class="panel-empty">
+            The passages behind each answer appear here.<br>Select an answer to see them.
+          </div>
+        </div>
+      </aside>
+    </div>
+
+  </div>
+  <script type="module" src="/js/pages/ask.js"></script>
+</body>
+</html>

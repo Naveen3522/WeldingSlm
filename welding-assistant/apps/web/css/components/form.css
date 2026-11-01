@@ -1,0 +1,125 @@
+/* Inputs, selects, field rows and the messages that go with them. Shared by every form in the app. */
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  font-size: 13px;
+  font-weight: 550;
+  color: var(--ink-2);
+}
+
+.field small {
+  font-weight: 400;
+  color: var(--muted);
+}
+
+input[type="text"],
+input[type="email"],
+input[type="search"],
+input[type="number"],
+input[type="password"],
+input:not([type]),
+select,
+textarea {
+  min-height: var(--control);
+  padding: 8px 12px;
+  border: 1px solid var(--line);
+  border-bottom: 2px solid var(--text);
+  border-radius: var(--radius);
+  background: var(--panel);
+  color: var(--text);
+  font: inherit;
+  font-weight: 400;
+}
+
+textarea {
+  min-height: 80px;
+}
+
+input.bad,
+.field.bad input {
+  border-color: var(--error);
+}
+
+.form-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: flex-end;
+}
+
+.form-row > .field {
+  flex: 1 1 170px;
+  min-width: 0;
+}
+
+.field select,
+.field input,
+.field textarea {
+  width: 100%;
+  min-width: 0;
+}
+
+.msg {
+  padding: 9px 12px;
+  border-radius: var(--radius);
+  font-size: 13px;
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+}
+
+.msg.ok {
+  background: var(--accent-soft);
+  border-color: var(--accent-line);
+  color: var(--accent);
+}
+
+.msg.bad {
+  background: var(--red-soft);
+  border-color: transparent;
+  color: var(--red);
+}
+
+.msg.warn {
+  background: var(--amber-soft);
+  border-color: transparent;
+  color: var(--amber);
+}
+
+.msg code {
+  display: inline-block;
+  margin: 0 6px;
+  padding: 1px 7px;
+  border-radius: 6px;
+  background: var(--code);
+  color: var(--ink);
+  user-select: all;
+}
+
+.msg ul {
+  margin: 0;
+  padding-left: 18px;
+}
+
+.hint {
+  font-size: 12.5px;
+  color: var(--muted);
+}
+
+/* A password box with its show/hide eye */
+
+.fe-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* A small heading with its action button at the end (Documents + , Highlights + , Symbols + ): used on every page that has a form window */
+.fe-vars-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 36px;
+}

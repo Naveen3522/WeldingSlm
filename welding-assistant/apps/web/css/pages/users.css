@@ -1,0 +1,128 @@
+/* The Users page: People, Roles and Permissions. */
+
+.people__tools,
+.roles__tools,
+.perms__tools {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.people__search {
+  flex: 1;
+  max-width: 360px;
+}
+
+.people__status,
+.roles__status,
+.perms__status {
+  margin-bottom: 12px;
+}
+
+.people__status:empty,
+.roles__status:empty,
+.perms__status:empty {
+  display: none;
+}
+
+.people__email {
+  color: var(--muted);
+  overflow-wrap: anywhere;
+}
+
+.people__role,
+.roles__level,
+.perms__level {
+  min-height: 36px;
+  min-width: 90px;
+}
+
+.people__role {
+  min-width: 170px;
+}
+
+.roles__name {
+  width: 100%;
+  min-height: 36px;
+}
+
+.people__temp {
+  display: grid;
+  gap: 10px;
+}
+
+.people__temp-line {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--panel-2);
+}
+
+.people__temp-key {
+  flex: 1;
+  min-width: 0;
+  font-size: 18px;
+  font-weight: 650;
+  letter-spacing: 0.06em;
+  overflow-wrap: anywhere;
+}
+
+.perms__screen td {
+  background: var(--panel-2);
+  border-top: 2px solid var(--line);
+  font-weight: 650;
+}
+
+.perms__nestedcell {
+  padding: 4px 0 12px 44px;
+  background: var(--panel);
+}
+
+.perms__nested {
+  width: 100%;
+  border-left: 3px solid var(--accent-line);
+}
+
+.perms__nested th {
+  background: var(--panel);
+  color: var(--muted);
+  font-size: 12.5px;
+  font-weight: 600;
+  text-align: left;
+}
+
+.perms__label {
+  font-size: var(--card-title-size);
+}
+
+.perms__control .perms__name {
+  padding-left: 12px;
+}
+
+.perms__name small {
+  font-weight: 400;
+}
+
+.search.people__search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 12px;
+  border: 1px solid var(--line);
+  border-bottom: 2px solid var(--text);
+  border-radius: var(--radius);
+  background: var(--panel);
+}
+
+.search.people__search input {
+  flex: 1;
+  min-width: 0;
+  border: 0;
+  background: none;
+  min-height: 36px;
+  padding: 0;
+}

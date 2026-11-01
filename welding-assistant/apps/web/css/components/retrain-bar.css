@@ -1,0 +1,86 @@
+/* The refresh icon and the banner under the header (administrators, every page). */
+
+/* The refresh icon: a dot when documents are waiting */
+#refreshBtn {
+  position: relative;
+  font-size: 17px;
+  line-height: 1;
+}
+
+#refreshBtn.pending::after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--amber);
+  border: 2px solid var(--surface);
+}
+
+.admin-check {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--ink-2);
+}
+
+/* The banner under the header for administrators: indexing, the retrain prompt, the running job and its result */
+.retrain-bar {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 0;
+  padding: 10px 24px;
+  border-bottom: 1px solid var(--line);
+  background: var(--surface);
+  font-size: 13.5px;
+}
+
+.retrain-bar.run {
+  background: var(--accent-soft);
+}
+
+.retrain-bar.ask {
+  background: var(--amber-soft);
+}
+
+.retrain-bar.warn {
+  background: var(--amber-soft);
+}
+
+.retrain-bar.ok {
+  background: var(--accent-soft);
+}
+
+.retrain-bar.bad {
+  background: var(--red-soft);
+}
+
+.retrain-bar.info {
+  background: var(--blue-soft);
+}
+
+.retrain-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+.retrain-bar progress,
+.admin-body progress {
+  width: 100%;
+  height: 8px;
+}
+
+.retrain-bar select {
+  max-width: 100%;
+}
+
+
+.retrain-bar[hidden] {
+  display: none;
+}

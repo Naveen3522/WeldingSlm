@@ -1,0 +1,133 @@
+/* The sign-in, forgotten-password and change-password pages. */
+
+.auth {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: grid;
+  place-items: center;
+  padding: 16px;
+  background: var(--bg);
+}
+
+.auth-card {
+  width: min(390px, 100%);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 26px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.auth-brand {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+}
+
+.auth-card h1 {
+  margin: 6px 0 0;
+  font-size: 22px;
+  letter-spacing: -0.01em;
+}
+
+.auth-note {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.auth-card label {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  font-size: 13px;
+  font-weight: 550;
+  color: var(--ink-2);
+}
+
+.auth-error {
+  min-height: 1.3em;
+  color: var(--red);
+  font-size: 13px;
+}
+
+.auth-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.auth-submit {
+  padding: 9px 16px;
+  font-size: 14px;
+}
+
+.auth-submit:disabled {
+  opacity: 0.6;
+}
+
+.auth-timer { display: flex; align-items: center; justify-content: space-between; gap: 8px; font-size: 13px; color: var(--muted); margin: 4px 0 8px; }
+.auth-links { margin: 2px 0 8px; font-size: 13px; }
+.auth-links .link { background: none; border: 0; padding: 0; color: inherit; text-decoration: none; cursor: pointer; font: inherit; }
+.auth-links .link:hover { text-decoration: underline; }
+.auth-timer .btn { white-space: nowrap; flex: none; }
+
+.keybox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--panel-2);
+}
+
+.keybox__key {
+  flex: 1;
+  min-width: 0;
+  font-size: 18px;
+  font-weight: 650;
+  letter-spacing: 0.06em;
+  overflow-wrap: anywhere;
+}
+
+.keybox__tools {
+  display: flex;
+  gap: 4px;
+}
+
+.auth-links a {
+  color: inherit;
+}
+
+.auth-switch {
+  margin: 2px 0 0;
+  text-align: center;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.auth-switch a {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.auth-switch a:hover {
+  text-decoration: underline;
+}
+
+.auth-brand .mark {
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  border-radius: var(--radius);
+  background: var(--accent);
+  color: var(--accent-ink);
+  font-size: 20px;
+}

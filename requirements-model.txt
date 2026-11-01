@@ -1,0 +1,8 @@
+# Only needed to REBUILD the Ollama model from welding_slm/lora_adapter (step 4 of the README).
+# Install the CPU or CUDA build of torch first if you want a specific one: https://pytorch.org/get-started/locally/
+torch
+transformers>=4.50
+peft>=0.14
+safetensors
+sentencepiece
+accelerate

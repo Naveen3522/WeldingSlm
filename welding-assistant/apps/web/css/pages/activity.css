@@ -1,0 +1,20 @@
+/* Activity: the audit history table and its filters. */
+
+.activity__tools {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.activity__tools input[type="search"] {
+  min-width: 200px;
+}
+
+.activity__time {
+  white-space: nowrap;
+}
+
+.activity__question {
+  overflow-wrap: anywhere;
+}

@@ -1,0 +1,1266 @@
+[
+ {
+  "id": "scope",
+  "question": "What does this reference set cover, and what are its limits?",
+  "aliases": [
+   "what is in this documentation",
+   "what topics do these documents cover",
+   "what can you answer",
+   "what are the known gaps of this reference set",
+   "scope of the welding reference",
+   "what is not covered in these documents"
+  ],
+  "answer": "It is a working reference of seventy-eight chapters in ten volumes on industrial welding and joining, and it states its own limits plainly.",
+  "points": [
+   {
+    "text": "Every chapter ends with a Known Gaps section, and the last chapter collects them in one place. [2]",
+    "cites": [
+     2
+    ],
+    "word_support": 0.82
+   },
+   {
+    "text": "Specifically not covered: national deviations to EN ISO adoptions, jurisdictional amendments to ASME adoption, occupational health and safety regulation, environmental and emissions regulation, classification society rules, nuclear regulatory requirements and customer-specific specifications. [3]",
+    "cites": [
+     3
+    ],
+    "word_support": 1.0
+   },
+   {
+    "text": "It says it cannot answer: what current and voltage to use (a qualified WPS answers this), whether a weld is acceptable (needs the governing acceptance criteria and an inspection result), what preheat is needed (calculate it from the actual material, thickness, hydrogen level and restraint), or which brand of consumable to buy (it names no products). [4]",
+    "cites": [
+     4
+    ],
+    "word_support": 0.86
+   }
+  ],
+  "sources": [
+   0,
+   2256,
+   2261,
+   2270
+  ],
+  "tags": [
+   "scope"
+  ],
+  "source_quotes": [
+   "seventy-eight chapters in ten volumes",
+   "Every chapter in this reference set ends with a Known Gaps section",
+   "National deviations to EN ISO adoptions",
+   "What current and voltage should I use?"
+  ]
+ },
+ {
+  "id": "process_selection",
+  "question": "How do I choose the right welding process for a job?",
+  "aliases": [
+   "how to select a welding process",
+   "which welding process should I use",
+   "process selection framework",
+   "how do I decide between welding processes",
+   "steps to select the joining process",
+   "choosing a weld process"
+  ],
+  "answer": "Screen the options in a fixed order: eliminating screens first, optimizing screens last.",
+  "points": [
+   {
+    "text": "The order is: joining family, material, thickness and joint geometry, and access and position (all eliminating), then volume and rate (optimizing), quality level and verification (constraining), and finally capability and cost of change (optimizing). [1]",
+    "cites": [
+     1
+    ],
+    "word_support": 0.95
+   },
+   {
+    "text": "The order matters because a process chosen on productivity and cost can be ruled out later by a material or access constraint discovered during industrialization. [1]",
+    "cites": [
+     1
+    ],
+    "word_support": 0.8
+   },
+   {
+    "text": "When criteria conflict: material wins over volume; access wins over productivity unless fixturing can create access; quality wins over cost where it is a code or safety requirement; if two candidates survive every screen, decide on cost, then risk, then flexibility. [2]",
+    "cites": [
+     2
+    ],
+    "word_support": 0.83
+   },
+   {
+    "text": "The most common selection error is choosing on productivity before feasibility. [3]",
+    "cites": [
+     3
+    ],
+    "word_support": 0.62
+   }
+  ],
+  "sources": [
+   2080,
+   2094,
+   2097
+  ],
+  "tags": [
+   "selection"
+  ],
+  "source_quotes": [
+   "Running them in the wrong order produces the classic failure",
+   "Material says A, volume says B",
+   "selecting on productivity before feasibility"
+  ]
+ },
+ {
+  "id": "gmaw_transfer",
+  "question": "What are the metal transfer modes in GMAW (MIG/MAG)?",
+  "aliases": [
+   "gmaw transfer modes",
+   "mig transfer modes short circuit globular spray pulsed",
+   "types of metal transfer in mig welding",
+   "difference between short-circuit and spray transfer",
+   "what is globular transfer",
+   "four metal transfer modes"
+  ],
+  "answer": "GMAW has four metal transfer modes: short-circuiting, globular, spray and pulsed spray. They are physical regimes set by current, voltage, wire diameter and shielding gas, not settings on a dial.",
+  "points": [
+   {
+    "text": "Short-circuiting: lowest current, any gas including CO₂, all positions, moderate but controllable spatter; used for thin material, open roots and out-of-position work. [1]",
+    "cites": [
+     1
+    ],
+    "word_support": 0.93
+   },
+   {
+    "text": "Globular: low-to-medium current, flat and horizontal only, the highest spatter, and not deliberately selected. [1]",
+    "cites": [
+     1
+    ],
+    "word_support": 0.9
+   },
+   {
+    "text": "Spray: high current, needs ≥ ~80 % argon, flat and horizontal, very low spatter; used for thick material and high deposition. [1]",
+    "cites": [
+     1
+    ],
+    "word_support": 0.93
+   },
+   {
+    "text": "Pulsed spray: low average current with high peaks, ≥ ~80 % argon, all positions, very low spatter; used for all-position work needing spray quality. [1]",
+    "cites": [
+     1
+    ],
+    "word_support": 0.94
+   },
+   {
+    "text": "Globular transfer sits between short-circuit and spray and is the worst operating region on every count, so run the process deliberately on one side of it. [3]",
+    "cites": [
+     3
+    ],
+    "word_support": 1.0
+   }
+  ],
+  "sources": [
+   1066,
+   1067,
+   1066
+  ],
+  "tags": [
+   "gmaw"
+  ],
+  "source_quotes": [
+   "Four modes exist, and they are not settings on a dial",
+   "Mechanism. At low current and voltage, the wire feeds forward until it physically touches the pool",
+   "globular transfer sits between short-circuit and spray"
+  ]
+ },
+ {
+  "id": "gmaw_porosity",
+  "question": "What causes porosity in GMAW and how is it corrected?",
+  "aliases": [
+   "mig welding porosity causes",
+   "why do i get porosity in gmaw",
+   "gmaw porosity troubleshooting",
+   "how to fix porosity in mig welds",
+   "gas shielding porosity in wire welding",
+   "porosity gets worse when i increase gas flow"
+  ],
+  "answer": "In GMAW, porosity almost always comes from a compromised gas shield or from contamination of the joint.",
+  "points": [
+   {
+    "text": "Gas flow: too low gives porosity, and too high causes turbulence that entrains air, which also gives porosity. [1]",
+    "cites": [
+     1
+    ],
+    "word_support": 0.7
+   },
+   {
+    "text": "Gas hardware: a blocked diffuser or spatter built up inside the nozzle disturbs the gas envelope; insufficient pre-flow gives start porosity and insufficient post-flow gives crater porosity. [2]",
+    "cites": [
+     2
+    ],
+    "word_support": 0.89
+   },
+   {
+    "text": "Arc and stick-out: excessive voltage (a long arc) gives porosity, and excessive stick-out gives poor gas coverage. [5]",
+    "cites": [
+     5
+    ],
+    "word_support": 0.82
+   },
+   {
+    "text": "Contamination: rust, zinc coating, oil and moisture generate gas in the pool, so clean the joint. [3]",
+    "cites": [
+     3
+    ],
+    "word_support": 0.89
+   },
+   {
+    "text": "If porosity worsens when gas flow is increased, check for flow above the laminar limit for the nozzle, a partly blocked nozzle, excessive stick-out and draught; return flow to the correct value, clean the nozzle and diffuser, screen the work area and leak-check the gas path. [4]",
+    "cites": [
+     4
+    ],
+    "word_support": 1.0
+   }
+  ],
+  "sources": [
+   1078,
+   1072,
+   1083,
+   1089,
+   1078
+  ],
+  "tags": [
+   "gmaw",
+   "defects"
+  ],
+  "source_quotes": [
+   "Too low: porosity. Too high: turbulence entrains air",
+   "Blocked diffuser disturbs the gas envelope",
+   "Rust, zinc coating, oil and moisture generate gas in the pool",
+   "Card 3 — Porosity that worsens when gas flow is increased",
+   "porosity from a long arc"
+  ]
+ },
+ {
+  "id": "shielding_gas",
+  "question": "Which shielding gas should I use for carbon steel, stainless steel and aluminium?",
+  "aliases": [
+   "shielding gas selection",
+   "what gas for mig welding steel",
+   "argon co2 mix for carbon steel",
+   "best gas for tig welding aluminium",
+   "gas for stainless steel welding",
+   "what gas do i use for aluminium mig"
+  ],
+  "answer": "The gas depends on the process and material: argon-rich mixtures suit spray transfer, and aluminium needs an inert gas.",
+  "points": [
+   {
+    "text": "GMAW carbon steel, short-circuit: Ar-CO₂ mixtures with moderate CO₂, or CO₂; higher CO₂ gives penetration at the cost of spatter. [1]",
+    "cites": [
+     1
+    ],
+    "word_support": 1.0
+   },
+   {
+    "text": "GMAW carbon steel, spray: an argon-rich mixture (≥ ~80 % Ar), often with a few percent O₂ or CO₂; pulsed transfer needs the same argon-rich base. [1]",
+    "cites": [
+     1
+    ],
+    "word_support": 1.0
+   },
+   {
+    "text": "GMAW austenitic stainless: argon with small additions of O₂ or CO₂, often as a tri-mix. [1]",
+    "cites": [
+     1
+    ],
+    "word_support": 1.0
+   },
+   {
+    "text": "GMAW aluminium: pure argon, or argon-helium for thick sections; inert gases only, no oxidizing component. [1]",
+    "cites": [
+     1
+    ],
+    "word_support": 0.92
+   },
+   {
+    "text": "GTAW: argon for steel and stainless (argon-helium for more heat; argon-hydrogen for austenitic stainless and nickel); for aluminium, argon on AC and argon-helium for thick sections. [1][2]",
+    "cites": [
+     1,
+     2
+    ],
+    "word_support": 1.0
+   }
+  ],
+  "sources": [
+   810,
+   811
+  ],
+  "tags": [
+   "gas"
+  ],
+  "source_quotes": [
+   "GMAW, carbon steel, short-circuit",
+   "GTAW, aluminium"
+  ]
+ },
+ {
+  "id": "filler_designation",
+  "question": "How do I read a filler metal designation such as ER70S-6 or E7018?",
+  "aliases": [
+   "what does er70s-6 mean",
+   "decode e7018 electrode",
+   "filler wire classification meaning",
+   "how to select filler metal",
+   "why is er70s-6 used for general fabrication",
+   "what does the 70 in e7018 stand for"
+  ],
+  "answer": "The letters and digits encode the form of the filler, its minimum tensile strength and its composition or covering.",
+  "points": [
+   {
+    "text": "ER70S-6: ER means electrode or rod; 70 is the minimum tensile strength of the deposit, 70 ksi; S means solid wire; 6 is the chemical composition designator. [1]",
+    "cites": [
+     1
+    ],
+    "word_support": 1.0
+   },
+   {
+    "text": "ER70S-6 has higher manganese and silicon than ER70S-3, so it tolerates more mill scale and light rust and gives a more fluid pool with better wetting; that is why it dominates general fabrication. [3]",
+    "cites": [
+     3
+    ],
+    "word_support": 0.94
+   },
+   {
+    "text": "E7018: 70 is the minimum tensile strength, 70 ksi; the digit 1 means all positions (2 is flat and horizontal fillet only; 4 is all positions including vertical down); the digit 8 means a low-hydrogen potassium covering with iron powder, usable on AC or DCEP. [2]",
+    "cites": [
+     2
+    ],
+    "word_support": 1.0
+   }
+  ],
+  "sources": [
+   777,
+   775,
+   777
+  ],
+  "tags": [
+   "filler"
+  ],
+  "source_quotes": [
+   "Minimum tensile strength of the deposit, 70 ksi",
+   "usable on AC or DCEP",
+   "This is why ER70S-6 dominates general fabrication"
+  ]
+ },
+ {
+  "id": "preheat",
+  "question": "How is preheat and interpass temperature decided for carbon and low-alloy steel?",
+  "aliases": [
+   "what preheat temperature do i need",
+   "how to calculate preheat",
+   "preheat for carbon steel",
+   "carbon equivalent and preheat",
+   "how do i determine preheat",
+   "what is preheat and why is it needed"
+  ],
+  "answer": "Preheat is calculated from the actual joint, not looked up from carbon equivalent alone.",
+  "points": [
+   {
+    "text": "Preheat acts before and during welding to control the cooling rate and keep the joint out of the hydrogen cracking window while hydrogen escapes. [1]",
+    "cites": [
+     1
+    ],
+    "word_support": 1.0
+   },
+   {
+    "text": "A carbon equivalent is a hardenability index, not a preheat prescription: on its own it says nothing about hydrogen level, restraint or thickness. [3]",
+    "cites": [
+     3
+    ],
+    "word_support": 1.0
+   },
+   {
+    "text": "AWS D1.1 Annex B computes minimum preheat from composition, thickness, hydrogen level and restraint rather than applying a single carbon equivalent cutoff. [2]",
+    "cites": [
+     2
+    ],
+    "word_support": 0.8
+   },
+   {
+    "text": "Preheat, interpass temperature and post-weld heat treatment are different controls; a specified PWHT does not compensate for inadequate preheat. [4]",
+    "cites": [
+     4
+    ],
+    "word_support": 0.92
+   },
+   {
+    "text": "The reference set says to calculate preheat from the actual material, thickness, hydrogen level and restraint using the applicable standard's method. [5]",
+    "cites": [
+     5
+    ],
+    "word_support": 0.86
+   }
+  ],
+  "sources": [
+   911,
+   589,
+   589,
+   911,
+   2270
+  ],
+  "tags": [
+   "preheat"
+  ],
+  "source_quotes": [
+   "Preheat acts before and during welding, to control the cooling rate",
+   "AWS D1.1 Annex B, for instance, does not apply a single carbon equivalent cutoff",
+   "A carbon equivalent is a hardenability index, not a preheat prescription",
+   "Confusing them produces real errors",
+   "What preheat do I need?"
+  ]
+ },
+ {
+  "id": "hydrogen_cracking",
+  "question": "How is hydrogen cracking prevented when welding steel?",
+  "aliases": [
+   "hydrogen cracking prevention",
+   "cold cracking in steel welds",
+   "low hydrogen electrodes storage",
+   "how to avoid hydrogen induced cracking",
+   "why must low hydrogen electrodes be kept in an oven",
+   "delayed cracking after welding"
+  ],
+  "answer": "Hydrogen cracking is prevented by controlling hydrogen and the cooling rate: consumable handling, joint cleanliness and preheat.",
+  "points": [
+   {
+    "text": "Preheat holds the joint above the temperature range where hydrogen cracking operates for longer, giving diffusible hydrogen time to escape while the metal is still warm. [1]",
+    "cites": [
+     1
+    ],
+    "word_support": 1.0
+   },
+   {
+    "text": "Preheat must be maintained rather than merely applied, and maintaining temperature after welding (a hydrogen soak) is a recognized control on thick, restrained, high-strength joints. [2]",
+    "cites": [
+     2
+    ],
+    "word_support": 1.0
+   },
+   {
+    "text": "Low-hydrogen electrodes are hygroscopic: the covering absorbs moisture from the moment the sealed packet is opened, so enforce oven and quiver discipline and verify the electrode class against the WPS. [3][4]",
+    "cites": [
+     3,
+     4
+    ],
+    "word_support": 1.0
+   },
+   {
+    "text": "Consumable exposure and joint surface condition account for a large share of root causes in cracking investigations, so consumable handling is usually the cheapest control. [5]",
+    "cites": [
+     5
+    ],
+    "word_support": 0.94
+   },
+   {
+    "text": "Where hydrogen cracking is credible, observe any specified delay before final non-destructive testing. [6]",
+    "cites": [
+     6
+    ],
+    "word_support": 1.0
+   }
+  ],
+  "sources": [
+   595,
+   912,
+   1041,
+   1051,
+   594,
+   1047
+  ],
+  "tags": [
+   "cracking",
+   "preheat"
+  ],
+  "source_quotes": [
+   "It holds the joint above the temperature range in which hydrogen cracking operates",
+   "it is why preheat must be maintained rather than merely applied",
+   "Low-hydrogen electrodes are hygroscopic",
+   "Enforce oven and quiver discipline",
+   "The Cheapest Control Is Almost Always Consumable Handling",
+   "Observe any specified delay before final non-destructive testing"
+  ]
+ },
+ {
+  "id": "stainless",
+  "question": "How do I avoid sensitization and hot cracking when welding stainless steel?",
+  "aliases": [
+   "stainless steel welding problems",
+   "sensitization in austenitic stainless",
+   "hot cracking in stainless steel welds",
+   "why is ferrite important in stainless welds",
+   "welding 304 and 316 stainless",
+   "how to weld stainless steel without carbide precipitation"
+  ],
+  "answer": "Austenitic stainless steels fail in two characteristic ways in welding: sensitization and hot cracking.",
+  "points": [
+   {
+    "text": "Austenitic grades (304/304L, 316/316L, 321, 347, 310) are prone to sensitization, to hot cracking if the weld metal is ferrite-free, and to heavy distortion. [1]",
+    "cites": [
+     1
+    ],
+    "word_support": 0.9
+   },
+   {
+    "text": "Sensitization depends on time at temperature, so lower heat input means less time in the sensitizing range and less carbide precipitated. [2]",
+    "cites": [
+     2
+    ],
+    "word_support": 1.0
+   },
+   {
+    "text": "Ferrite in austenitic weld metal is the hot-cracking control, so filler selection and ferrite control are decided deliberately. [4]",
+    "cites": [
+     4
+    ],
+    "word_support": 0.83
+   },
+   {
+    "text": "Heat input windows and root purging are also part of the control; duplex, ferritic and martensitic grades fail differently (phase imbalance, grain growth and hydrogen cracking respectively). [3]",
+    "cites": [
+     3
+    ],
+    "word_support": 0.81
+   }
+  ],
+  "sources": [
+   620,
+   625,
+   618,
+   619
+  ],
+  "tags": [
+   "stainless"
+  ],
+  "source_quotes": [
+   "Sensitization; hot cracking if ferrite-free; heavy distortion",
+   "Heat input control helps all cases, because sensitization is time-at-temperature dependent",
+   "Why each stainless family fails differently",
+   "Ferrite in Austenitic Weld Metal: The Hot-Cracking Control"
+  ]
+ },
+ {
+  "id": "aluminium",
+  "question": "Why is aluminium difficult to weld and what are the main problems?",
+  "aliases": [
+   "aluminium welding problems",
+   "aluminum weldability",
+   "why does aluminium porosity happen",
+   "oxide layer on aluminium welding",
+   "hot cracking in aluminium",
+   "challenges of welding aluminum alloys"
+  ],
+  "answer": "Aluminium is hard to weld because of its oxide film, hydrogen porosity, high thermal conductivity and hot cracking.",
+  "points": [
+   {
+    "text": "The oxide forms instantly, is chemically stable and electrically insulating, and melts at a temperature far above the metal beneath it; it also absorbs moisture, making it a hydrogen reservoir. [1]",
+    "cites": [
+     1
+    ],
+    "word_support": 1.0
+   },
+   {
+    "text": "Hydrogen porosity is the characteristic defect: causes include moisture in the oxide film, hydrocarbon contamination, wet or dirty filler wire, gas-line leaks, turbulent gas flow and condensation; the corrective actions are degreasing then mechanically cleaning immediately before welding, controlling filler storage, leak-checking the gas path and correcting the flow. [2]",
+    "cites": [
+     2
+    ],
+    "word_support": 0.79
+   },
+   {
+    "text": "Thermal conductivity is roughly four to six times that of steel, so on a long weld the workpiece heats up progressively and parameters correct at the start of a seam are too hot at the end. [3]",
+    "cites": [
+     3
+    ],
+    "word_support": 1.0
+   },
+   {
+    "text": "Hot cracking depends on alloy chemistry, so a silicon-rich 4xxx filler moves the weld well past the peak into the crack-tolerant region: filler selection for aluminium is a crack-avoidance decision. [4]",
+    "cites": [
+     4
+    ],
+    "word_support": 0.61
+   }
+  ],
+  "sources": [
+   658,
+   671,
+   652,
+   663
+  ],
+  "tags": [
+   "aluminium"
+  ],
+  "source_quotes": [
+   "Aluminium oxide forms instantly on exposed aluminium",
+   "Hydrogen porosity | RT; visible on sectioning",
+   "Its thermal conductivity is roughly four to six times that of steel",
+   "A silicon-rich 4xxx filler moves it well past the peak"
+  ]
+ },
+ {
+  "id": "dissimilar",
+  "question": "What are the main problems when joining dissimilar metals?",
+  "aliases": [
+   "dissimilar metal welding problems",
+   "welding steel to aluminium",
+   "joining stainless to carbon steel",
+   "intermetallic layer in aluminium steel joint",
+   "why do dissimilar joints fail",
+   "thermal expansion mismatch in dissimilar welds"
+  ],
+  "answer": "A dissimilar joint is a different engineering problem because properties change abruptly across a short distance.",
+  "points": [
+   {
+    "text": "Strength, thermal expansion, conductivity and electrochemical potential all step across a short distance; gradients concentrate stress and drive corrosion. [1]",
+    "cites": [
+     1
+    ],
+    "word_support": 1.0
+   },
+   {
+    "text": "Thermal expansion mismatch: austenitic stainless expands roughly fifty percent more than ferritic steel per degree, which creates cyclic strain at the interface in thermally cycled service. [2]",
+    "cites": [
+     2
+    ],
+    "word_support": 0.9
+   },
+   {
+    "text": "Iron-aluminium joints form a brittle Fe-Al intermetallic layer that becomes a crack path once it exceeds a few micrometres. [3]",
+    "cites": [
+     3
+    ],
+    "word_support": 0.92
+   },
+   {
+    "text": "Failures often appear at or near the interface on the ferritic side after long service, driven by carbon migration, thermal expansion mismatch, creep strength mismatch and residual stress. [4]",
+    "cites": [
+     4
+    ],
+    "word_support": 0.9
+   },
+   {
+    "text": "Mechanical joining (self-piercing rivets, flow-drill screws) and structural adhesives avoid the metallurgical problem entirely. [5]",
+    "cites": [
+     5
+    ],
+    "word_support": 1.0
+   }
+  ],
+  "sources": [
+   712,
+   713,
+   713,
+   719,
+   721
+  ],
+  "tags": [
+   "dissimilar"
+  ],
+  "source_quotes": [
+   "The joint contains a property gradient",
+   "Austenitic stainless expands roughly fifty percent more than ferritic steel",
+   "the Fe-Al intermetallic layer that forms at the interface is brittle at any thickness",
+   "carbon migration (Section 5)",
+   "Mechanical joining and adhesive bonding"
+  ]
+ },
+ {
+  "id": "wps_pqr",
+  "question": "What is the difference between a WPS, a PQR and a welder qualification?",
+  "aliases": [
+   "wps vs pqr",
+   "what is a welding procedure specification",
+   "procedure qualification record meaning",
+   "prequalified wps",
+   "does a wps replace welder qualification",
+   "wpq welder performance qualification"
+  ],
+  "answer": "The PQR proves what happened once; the WPS states what may be done in production; the range between them is set by the code's essential variable rules.",
+  "points": [
+   {
+    "text": "A prequalified WPS may be used without a supporting PQR only if every one of the code's prequalification conditions is met: approved base metal, filler metal and process, a prequalified joint detail, preheat per the code's table, and parameters within limits. [2]",
+    "cites": [
+     2
+    ],
+    "word_support": 0.96
+   },
+   {
+    "text": "Prequalification applies to the procedure, not to the people: it does not remove the welder qualification requirement. [2]",
+    "cites": [
+     2
+    ],
+    "word_support": 1.0
+   },
+   {
+    "text": "Welder qualification is specific to how the test was done: vertical-down and vertical-up are distinct, and a welder qualified in one is not thereby qualified in the other. [4]",
+    "cites": [
+     4
+    ],
+    "word_support": 0.83
+   },
+   {
+    "text": "Qualifications do not transfer between systems automatically: a welder qualified to ISO 9606-1 is not thereby qualified under ASME Section IX. [3]",
+    "cites": [
+     3
+    ],
+    "word_support": 1.0
+   }
+  ],
+  "sources": [
+   835,
+   842,
+   876,
+   869
+  ],
+  "tags": [
+   "qualification"
+  ],
+  "source_quotes": [
+   "The relationship in one sentence",
+   "It does not remove the welder qualification requirement",
+   "Qualifications do not transfer between systems automatically",
+   "A welder qualified vertical-down is not thereby qualified vertical-up"
+  ]
+ },
+ {
+  "id": "qualification_standards",
+  "question": "Which standards apply to welder and procedure qualification?",
+  "aliases": [
+   "iso 9606 vs asme ix",
+   "standards for welder certification",
+   "which code covers welding procedure qualification",
+   "iso 15614 and iso 15607",
+   "aws d1.1 prequalification",
+   "welder qualification standards"
+  ],
+  "answer": "Three systems dominate: the ISO series, ASME Section IX and AWS D1.1.",
+  "points": [
+   {
+    "text": "Manual and partly mechanized welders: ISO 9606-1 (steel), -2 (aluminium), -3/-4/-5 (nickel, copper, titanium/zirconium); AWS D1.1 Clause 6 Part C; ASME Section IX Article III. [1]",
+    "cites": [
+     1
+    ],
+    "word_support": 0.67
+   },
+   {
+    "text": "Operators and setters of mechanized or automatic equipment: ISO 14732. [1]",
+    "cites": [
+     1
+    ],
+    "word_support": 1.0
+   },
+   {
+    "text": "Procedures: ISO 15607 sets out qualification by procedure test (ISO 15614), pre-production test (15613), tested consumables (15610), previous experience (15611) and standard welding procedure (15612). [2]",
+    "cites": [
+     2
+    ],
+    "word_support": 1.0
+   },
+   {
+    "text": "AWS D1.1 offers prequalification, which ISO does not. [3]",
+    "cites": [
+     3
+    ],
+    "word_support": 1.0
+   }
+  ],
+  "sources": [
+   2158,
+   2156,
+   2157
+  ],
+  "tags": [
+   "standards",
+   "qualification"
+  ],
+  "source_quotes": [
+   "Manual and partly mechanized welders",
+   "ISO 15607 sets out qualification by procedure test",
+   "AWS D1.1 offers prequalification, which ISO does not"
+  ]
+ },
+ {
+  "id": "imperfections",
+  "question": "What are the common weld imperfections and how are acceptance limits set?",
+  "aliases": [
+   "weld acceptance criteria",
+   "iso 5817 quality levels b c d",
+   "how is weld quality level chosen",
+   "are cracks allowed in welds",
+   "what are the weld imperfection acceptance limits",
+   "difference between quality level b and c"
+  ],
+  "answer": "Acceptance is decided against a quality level, not a single pass/fail line.",
+  "points": [
+   {
+    "text": "ISO 5817 gives quality levels for imperfections in fusion-welded joints in steel, nickel, titanium and their alloys (beam welding excluded): B is stringent, C intermediate and D moderate, the most permissive. [1]",
+    "cites": [
+     1
+    ],
+    "word_support": 0.89
+   },
+   {
+    "text": "The level is set by the design specification, product standard or contract, based on consequence of failure, loading (static or fatigue) and service conditions, not by the fabricator. [2]",
+    "cites": [
+     2
+    ],
+    "word_support": 1.0
+   },
+   {
+    "text": "Each imperfection type has its own limit, so a weld can meet level B for porosity and fail level C for undercut. [2]",
+    "cites": [
+     2
+    ],
+    "word_support": 1.0
+   },
+   {
+    "text": "Cracks are the most serious class of imperfection; in most codes and at most quality levels they are not permitted at any size. [3]",
+    "cites": [
+     3
+    ],
+    "word_support": 1.0
+   },
+   {
+    "text": "The reference set does not reproduce the numeric limits, which belong to the standard itself. [4]",
+    "cites": [
+     4
+    ],
+    "word_support": 0.86
+   }
+  ],
+  "sources": [
+   986,
+   986,
+   973,
+   998
+  ],
+  "tags": [
+   "quality",
+   "defects"
+  ],
+  "source_quotes": [
+   "ISO 5817 provides quality levels for imperfections in fusion-welded joints",
+   "The level is selected by the application, not by the fabricator",
+   "In most codes and at most quality levels, cracks are not permitted at any size",
+   "No acceptance limits are reproduced"
+  ]
+ },
+ {
+  "id": "ndt_methods",
+  "question": "Which NDT methods are used to inspect welds and how is the method chosen?",
+  "aliases": [
+   "non destructive testing of welds",
+   "when to use ultrasonic vs radiographic testing",
+   "magnetic particle testing limitations",
+   "how to choose an ndt method",
+   "iso 17635 method selection",
+   "surface vs subsurface weld inspection methods"
+  ],
+  "answer": "Method choice is governed by ISO 17635 and decided by material, joint, expected defects, access, acceptance criteria and consequence.",
+  "points": [
+   {
+    "text": "Material: whether it is ferromagnetic decides magnetic particle testing, which is eliminated for austenitic stainless steel, aluminium and most nickel alloys; coarse austenitic weld metal constrains ultrasonics. [2]",
+    "cites": [
+     2
+    ],
+    "word_support": 0.86
+   },
+   {
+    "text": "Joint type and thickness: thin material limits ultrasonic access; heavy sections limit radiographic practicality and dose. [2]",
+    "cites": [
+     2
+    ],
+    "word_support": 1.0
+   },
+   {
+    "text": "Expected defects: a process prone to lack of fusion needs a method that finds planar defects; one prone to porosity is well served by radiography. [2]",
+    "cites": [
+     2
+    ],
+    "word_support": 1.0
+   },
+   {
+    "text": "Access: radiography needs both sides; ultrasonics needs one. [2]",
+    "cites": [
+     2
+    ],
+    "word_support": 1.0
+   },
+   {
+    "text": "Penetrant and magnetic particle testing are surface methods; a subsurface defect is invisible to them regardless of size. [3]",
+    "cites": [
+     3
+    ],
+    "word_support": 1.0
+   },
+   {
+    "text": "Method standards: ISO 17636 (radiographic), ISO 17640 (ultrasonic), ISO 3452 (penetrant), ISO 13588 (phased array), ISO 10863 (time-of-flight diffraction) and ISO 17643 (eddy current); acceptance levels are in ISO 23277, ISO 23278, ISO 10675-1 and ISO 11666. [4][5]",
+    "cites": [
+     4,
+     5
+    ],
+    "word_support": 1.0
+   }
+  ],
+  "sources": [
+   954,
+   954,
+   938,
+   967,
+   968
+  ],
+  "tags": [
+   "ndt"
+  ],
+  "source_quotes": [
+   "Selection is governed in international practice by ISO 17635",
+   "Ferromagnetic or not",
+   "Whether it breaks the surface",
+   "ISO 17636 (radiographic testing of welds)",
+   "Acceptance-level standards referenced in Section 14"
+  ]
+ },
+ {
+  "id": "safety",
+  "question": "What are the main hazards in welding and the safety controls?",
+  "aliases": [
+   "welding safety hazards",
+   "confined space welding safety",
+   "how to prevent welding fume exposure",
+   "arc eye and electric shock prevention",
+   "welding fire safety",
+   "ansi awsz49.1 welding safety"
+  ],
+  "answer": "The hazards that actually injure welders are shock, radiation, fume, fire and asphyxiation, and each has specific controls.",
+  "points": [
+   {
+    "text": "Burns and eye injuries are the most frequent injuries; fire and explosion cause the largest single-event losses; fume causes the greatest total burden of serious harm but is chronic and under-perceived; confined-space asphyxiation causes the highest proportion of fatalities per event. [1]",
+    "cites": [
+     1
+    ],
+    "word_support": 0.96
+   },
+   {
+    "text": "Shock: dry clothing and gloves, equipment inspection, voltage-reducing devices, and the return connected at the work. [2]",
+    "cites": [
+     2
+    ],
+    "word_support": 1.0
+   },
+   {
+    "text": "Arc eye in a bystander: screens, matt UV-absorbing surfaces and screened bays in shared spaces. [2]",
+    "cites": [
+     2
+    ],
+    "word_support": 1.0
+   },
+   {
+    "text": "Fume: remove coatings and use local exhaust at source for zinc oxide from galvanized steel or brass (metal fume fever); identify cadmium in plating or brazing alloys before work; exclude chlorinated solvents from welding areas. [2]",
+    "cites": [
+     2
+    ],
+    "word_support": 0.96
+   },
+   {
+    "text": "Fire: extend the fire watch after work and check the far side; drums and tanks need cleaning, purging or inerting and gas testing. [2]",
+    "cites": [
+     2
+    ],
+    "word_support": 0.93
+   },
+   {
+    "text": "Confined spaces: entry permit, atmosphere testing before and continuously during entry, forced ventilation, an attendant outside, rescue arrangements before entry, gas supplies isolated during breaks, and never enter to rescue without breathing apparatus. [3]",
+    "cites": [
+     3
+    ],
+    "word_support": 0.85
+   },
+   {
+    "text": "The principal framework standard is ANSI/AWS Z49.1, Safety in Welding, Cutting, and Allied Processes. [4]",
+    "cites": [
+     4
+    ],
+    "word_support": 0.89
+   }
+  ],
+  "sources": [
+   1003,
+   1023,
+   1016,
+   1021
+  ],
+  "tags": [
+   "safety"
+  ],
+  "source_quotes": [
+   "Fume exposure causes the greatest total burden",
+   "Fatal secondary-circuit shock",
+   "Controls: confined space entry procedures with permit",
+   "ANSI/AWS Z49.1, Safety in Welding"
+  ]
+ },
+ {
+  "id": "spot_parameters",
+  "question": "What are typical resistance spot welding parameters for low-carbon steel?",
+  "aliases": [
+   "spot welding current for steel",
+   "spot weld nugget diameter rule",
+   "electrode face diameter for spot welding",
+   "iso 14373 spot welding parameters",
+   "rsw parameters thickness",
+   "minimum nugget size spot weld"
+  ],
+  "answer": "For low-carbon steel the reference gives geometry rules as functions of the thinnest sheet thickness and a typical production current range.",
+  "points": [
+   {
+    "text": "Typical production current for steel resistance spot welding is 8–15 kA. [1]",
+    "cites": [
+     1
+    ],
+    "word_support": 1.0
+   },
+   {
+    "text": "Electrode face diameter, minimum nugget diameter, minimum spacing and minimum edge distance are all functions of t, the thickness of the thinnest sheet in the stack in millimetres, per ISO 14373 guidance for low-carbon steel. [2]",
+    "cites": [
+     2
+    ],
+    "word_support": 0.95
+   },
+   {
+    "text": "The coefficients are 5√t for electrode diameter and 4√t–5√t for nugget diameter; they were developed around low-carbon steel and are not covered for aluminium. [5]",
+    "cites": [
+     5
+    ],
+    "word_support": 0.83
+   },
+   {
+    "text": "The first-trial force, time and current estimate is a function of ΣT, the sum of all sheet thicknesses in the stack, not of the thinnest sheet. [3]",
+    "cites": [
+     3
+    ],
+    "word_support": 1.0
+   },
+   {
+    "text": "The scope is low-carbon steel of about 0.4–3 mm, coated or uncoated. [4]",
+    "cites": [
+     4
+    ],
+    "word_support": 0.83
+   }
+  ],
+  "sources": [
+   507,
+   481,
+   481,
+   506,
+   486
+  ],
+  "tags": [
+   "spot"
+  ],
+  "source_quotes": [
+   "8–15 kA typical production current range for steel RSW",
+   "The metric geometry rules (electrode face diameter, minimum nugget diameter",
+   "The imperial first-trial estimate (force, time, current) is a function of ΣT",
+   "0.4–3 mm low-carbon-steel scope",
+   "The 5√t electrode-diameter coefficient"
+  ]
+ },
+ {
+  "id": "spot_expulsion",
+  "question": "What causes expulsion or spatter in resistance spot welding and how is it fixed?",
+  "aliases": [
+   "spot weld expulsion causes",
+   "why is my spot weld splashing",
+   "spot welding spatter troubleshooting",
+   "expulsion suddenly increased in spot welding",
+   "weld splash in resistance welding",
+   "how to reduce expulsion in rsw"
+  ],
+  "answer": "Expulsion is ejected molten metal, and it occurs when the heat input is more than the available force and geometry can contain.",
+  "points": [
+   {
+    "text": "Typical cause: current, time or both set too high relative to the force and electrode geometry that must contain the weld. [1]",
+    "cites": [
+     1
+    ],
+    "word_support": 0.92
+   },
+   {
+    "text": "If expulsion suddenly increases, check in this order: force, tip condition, current and time settings, then material surface condition; do not assume only the current setting changed. [2]",
+    "cites": [
+     2
+    ],
+    "word_support": 0.89
+   },
+   {
+    "text": "If it increases gradually after many welds with no program change, suspect contact-area and current-density drift from wear or a thermal-state change; check the current/resistance trace, the tip face, and coolant flow and temperature. [3]",
+    "cites": [
+     3
+    ],
+    "word_support": 0.86
+   },
+   {
+    "text": "It shows as spatter marks or ejected metal at the joint and as a recorded spatter event on the current/voltage trace. [1]",
+    "cites": [
+     1
+    ],
+    "word_support": 0.92
+   }
+  ],
+  "sources": [
+   316,
+   303,
+   99
+  ],
+  "tags": [
+   "spot",
+   "defects"
+  ],
+  "source_quotes": [
+   "Heat input too high for the available force/geometry to contain",
+   "Expulsion suddenly increases",
+   "Expulsion increasing after many welds without a program change"
+  ]
+ },
+ {
+  "id": "electrode_life",
+  "question": "How do I maintain electrodes and manage electrode life in spot welding?",
+  "aliases": [
+   "spot welding tip dressing",
+   "what is electrode mushrooming",
+   "when to dress spot welding electrodes",
+   "electrode tip wear in resistance welding",
+   "how often should tips be dressed",
+   "spot weld electrode material selection"
+  ],
+  "answer": "Electrode life is managed by dressing tips on a defined trigger before mushrooming lets current density drift.",
+  "points": [
+   {
+    "text": "Mushrooming is plastic deformation of the tip face that increases the effective face diameter and reduces current density for a given programmed current; it is the dominant wear mode on bare steel. [1]",
+    "cites": [
+     1
+    ],
+    "word_support": 1.0
+   },
+   {
+    "text": "The controller still reports the programmed current, but the process the workpiece experiences has drifted. [2]",
+    "cites": [
+     2
+    ],
+    "word_support": 0.89
+   },
+   {
+    "text": "Dress on a defined trigger (a weld count against the documented interval for the material and coating, a resistance or quality-trend signal crossing its threshold, or a scheduled maintenance point) rather than ad hoc or purely visually. [3]",
+    "cites": [
+     3
+    ],
+    "word_support": 0.95
+   },
+   {
+    "text": "Before cutting, inspect and record the tip: face diameter, mushrooming, material pickup, cracking, and taper or seating wear. [4]",
+    "cites": [
+     4
+    ],
+    "word_support": 1.0
+   },
+   {
+    "text": "Class 1/2-type high-conductivity alloys are the default for standard low-carbon-steel body-panel spot welding; harder, lower-conductivity classes are chosen for wear resistance or for aggressive coatings such as aluminium-coated or heavily galvanized steel. [5]",
+    "cites": [
+     5
+    ],
+    "word_support": 0.82
+   },
+   {
+    "text": "Weld strength trending down over a production run points to tip wear (mushrooming) or coating pickup. [6]",
+    "cites": [
+     6
+    ],
+    "word_support": 0.91
+   }
+  ],
+  "sources": [
+   94,
+   83,
+   97,
+   97,
+   92,
+   99
+  ],
+  "tags": [
+   "spot",
+   "maintenance"
+  ],
+  "source_quotes": [
+   "Mushrooming — plastic deformation of the tip face",
+   "A tip that has mushroomed since the last dressing",
+   "Confirm that the defined dressing trigger has actually been reached",
+   "Inspect the existing tip condition before cutting",
+   "Class 1/2-type alloys (high conductivity) are the default choice",
+   "Weld strength trending down over a production run"
+  ]
+ },
+ {
+  "id": "tig_polarity",
+  "question": "How do polarity and tungsten selection work in TIG (GTAW) welding?",
+  "aliases": [
+   "tig welding polarity dcen ac",
+   "which tungsten should i use for tig",
+   "why use ac for aluminium tig",
+   "lanthanated vs thoriated tungsten",
+   "gtaw polarity for stainless steel",
+   "tig ac balance and cleaning action"
+  ],
+  "answer": "Use DCEN for most metals and AC for aluminium and magnesium.",
+  "points": [
+   {
+    "text": "Polarity: DCEN for steel, stainless, nickel, titanium and copper; AC with an appropriate balance for aluminium and magnesium. [1]",
+    "cites": [
+     1
+    ],
+    "word_support": 1.0
+   },
+   {
+    "text": "DCEN puts the heat where it is wanted but provides no cleaning; DCEP cleans well but cannot carry useful current without an impractically large electrode; AC alternates to do both. [2]",
+    "cites": [
+     2
+    ],
+    "word_support": 1.0
+   },
+   {
+    "text": "Tungsten: lanthanated EWLa-1.5 (about 1.3–1.7 % lanthanum oxide, gold-coded) is non-radioactive, with conductivity resembling thoriated. [3]",
+    "cites": [
+     3
+    ],
+    "word_support": 0.73
+   },
+   {
+    "text": "Grinding thoriated tungsten produces low-level radioactive dust, which is why many organizations moved to lanthanated or ceriated electrodes; use a dedicated wheel with extraction. [4]",
+    "cites": [
+     4
+    ],
+    "word_support": 1.0
+   }
+  ],
+  "sources": [
+   1146,
+   1133,
+   1136,
+   1155
+  ],
+  "tags": [
+   "gtaw"
+  ],
+  "source_quotes": [
+   "Set polarity — DCEN for steel",
+   "The pattern is a straightforward trade",
+   "EWLa-1.5",
+   "Grinding thoriated tungsten produces low-level radioactive dust"
+  ]
+ }
+]

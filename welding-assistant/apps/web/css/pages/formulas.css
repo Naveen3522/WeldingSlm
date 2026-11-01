@@ -1,0 +1,757 @@
+/* Formulas page and the formula editor. */
+
+.formulas {
+  display: block;
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  padding: 26px 24px 40px;
+}
+
+.fm-page {
+  max-width: none;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.fm-head {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+}
+
+.fm-page h1 {
+  margin: 0;
+  font-size: var(--title-size);
+  line-height: 1.2;
+}
+
+.fm-sub {
+  margin: 4px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.fm-loading,
+.fm-empty {
+  padding: 18px 4px;
+  color: var(--muted);
+  font-size: 13.5px;
+}
+
+/* Question box */
+.fm-ask {
+  display: flex;
+  gap: 8px;
+  padding: 8px 8px 8px 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.fm-ask:focus-within {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+
+.fm-ask input {
+  flex: 1;
+  min-width: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  font: inherit;
+  color: var(--ink);
+}
+
+.fm-page input,
+.fm-page textarea,
+.fe-field input,
+.fe-field textarea {
+  padding: 8px 11px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface-2);
+  color: var(--ink);
+  font: inherit;
+}
+
+.fm-ask input {
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+
+.fm-page input.bad {
+  border-color: var(--red);
+}
+
+.fm-check {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--ink-2);
+}
+
+.fm-check input,
+.fe-check input {
+  width: auto;
+}
+
+.fm-group {
+  margin: 14px 0 8px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* Cards */
+.fm-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+  gap: 12px;
+}
+
+.fm-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  text-align: left;
+  box-shadow: var(--shadow);
+}
+
+.fm-card:hover {
+  border-color: var(--accent-line);
+  background: var(--accent-soft);
+}
+
+.fm-card.off {
+  opacity: 0.6;
+}
+
+.fm-card b {
+  font-size: var(--card-title-size);
+}
+
+.fm-summary,
+.fm-gives {
+  font-size: 12.5px;
+  color: var(--ink-2);
+  line-height: 1.4;
+}
+
+.fm-gives {
+  color: var(--muted);
+}
+
+.fm-expr-small {
+  padding: 3px 7px;
+  border-radius: 6px;
+  background: var(--code);
+  font: 12px ui-monospace, "Cascadia Mono", Consolas, monospace;
+  color: var(--ink);
+  white-space: pre-wrap;
+}
+
+.fm-badges {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.fm-badge {
+  display: inline-block;
+  padding: 1px 8px;
+  border-radius: 99px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: 11.5px;
+  font-weight: 550;
+}
+
+.fm-badge.s-admin {
+  background: var(--blue-soft);
+  color: var(--blue);
+}
+
+.fm-badge.s-suggested,
+.fm-badge.s-illustrative {
+  background: var(--amber-soft);
+  color: var(--amber);
+}
+
+.fm-badge.s-removed {
+  background: var(--red-soft);
+  color: var(--red);
+}
+
+/* One formula: the heading, description and equation share one card */
+.fm-main {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.fm-title {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+}
+
+.fm-expr {
+  padding: 14px 16px;
+  border: 1px solid var(--accent-line);
+  border-radius: var(--radius);
+  background: var(--accent-soft);
+  font: 600 17px/1.5 ui-monospace, "Cascadia Mono", Consolas, monospace;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.fm-section h2 {
+  margin: 8px 0 8px;
+  font-size: var(--card-title-size);
+}
+
+.fm-section p {
+  margin: 0;
+  line-height: 1.55;
+}
+
+.fm-section ul {
+  margin: 0;
+  padding-left: 20px;
+  line-height: 1.55;
+}
+
+.fm-scroll {
+  overflow-x: auto;
+}
+
+.fm-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.fm-table th {
+  padding: 6px 8px;
+  text-align: left;
+  color: var(--muted);
+  font-weight: 550;
+  border-bottom: 1px solid var(--line);
+  white-space: nowrap;
+}
+
+.fm-table td {
+  padding: 8px;
+  border-bottom: 1px solid var(--line-2);
+  vertical-align: top;
+  line-height: 1.45;
+}
+
+.fm-table code,
+.fm-out code {
+  font: 12.5px ui-monospace, "Cascadia Mono", Consolas, monospace;
+  overflow-wrap: anywhere;
+}
+
+/* Calculator */
+.fm-calc {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.fm-inputs {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  gap: 10px;
+}
+
+.fm-inputs label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.fm-caption {
+  font-size: 12.5px;
+  color: var(--ink-2);
+}
+
+.fm-caption small {
+  color: var(--muted);
+}
+
+.fm-err {
+  min-height: 1em;
+  color: var(--red);
+  font-size: 12px;
+}
+
+.fm-result {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.fm-out {
+  padding: 10px 12px;
+  border: 1px solid var(--accent-line);
+  border-radius: var(--radius);
+  background: var(--accent-soft);
+}
+
+.fm-value {
+  font-size: 22px;
+  font-weight: 650;
+  letter-spacing: -0.01em;
+}
+
+.fm-outname {
+  color: var(--ink-2);
+  font-size: 13px;
+}
+
+.fm-cite {
+  color: var(--muted);
+  font-size: 12.5px;
+}
+
+.fm-choices {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+/* Examples and source */
+.fm-examples {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.fm-example {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  font-size: 13px;
+}
+
+.fm-example .fm-badge {
+  margin-left: 8px;
+}
+
+.fm-example small {
+  display: block;
+  color: var(--muted);
+}
+
+.fm-source p {
+  margin-bottom: 8px;
+}
+
+/* Editor */
+.fe-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 10px;
+}
+
+.fe-field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 12.5px;
+  color: var(--ink-2);
+}
+
+.fe-field.wide {
+  grid-column: 1 / -1;
+}
+
+.fe-field input,
+.fe-field textarea {
+  font-weight: 400;
+}
+
+.fe-check {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--ink-2);
+}
+
+.fe-group {
+  margin-top: 18px;
+}
+
+.fe-group-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.fe-group h3 {
+  margin: 0;
+  font-size: 14px;
+}
+
+.fe-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin-top: 10px;
+  padding: 10px;
+  border: 1px solid var(--line-2);
+  border-radius: var(--radius);
+  background: var(--surface-2);
+}
+
+.fe-row > .fe-grid {
+  flex: 1;
+}
+
+#feBody > .btn.primary {
+  margin-top: 18px;
+}
+
+@media (max-width: 640px) {
+  .formulas {
+    padding: 18px 14px 32px;
+  }
+
+  .fm-head,
+  .fm-example {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+/* The simple formula form */
+#feBody {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.fe-result {
+  display: grid;
+  grid-template-columns: 100px auto 1fr 110px auto;
+  align-items: center;
+  gap: 8px;
+}
+
+.fe-eq {
+  font-weight: 700;
+  color: var(--muted);
+}
+
+.fe-vars {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.fe-var {
+  display: grid;
+  grid-template-columns: 1fr 1fr auto;
+  gap: 8px;
+  align-items: center;
+}
+
+.fe-check-line {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.fe-check-line.ok {
+  color: var(--success);
+}
+
+.fe-check-line.bad {
+  color: var(--red);
+}
+
+.fm-icons {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.fm-admin {
+  margin-top: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.fm-source {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 14px;
+  color: var(--muted);
+}
+
+.fm-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.ibtn.primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-ink);
+}
+
+.ibtn.wide {
+  width: auto;
+  padding: 0 14px;
+  gap: 6px;
+  display: inline-flex;
+  align-items: center;
+  font-size: 14px;
+}
+
+@media (max-width: 640px) {
+  .fe-result {
+    grid-template-columns: 1fr;
+  }
+
+  .fe-eq {
+    display: none;
+  }
+}
+
+/* "Used for" on a card and under the title; where the formula came from */
+.fm-used {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  color: var(--ink);
+  font-size: 15px;
+  line-height: 1.45;
+}
+
+.fm-summary {
+  margin: 0;
+  color: var(--ink);
+  font-size: 20px;
+  line-height: 1.5;
+}
+
+.fm-card .badge {
+  align-self: flex-start;
+  max-width: 100%;
+  margin-top: 4px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* The editor window */
+.fe-count {
+  align-self: flex-end;
+  margin-top: -8px;
+  color: var(--muted);
+}
+
+.fe-source {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-top: 10px;
+  border-top: 1px dashed var(--line);
+}
+
+.fe-found.ok {
+  color: var(--accent);
+}
+
+.fe-found.warn {
+  color: var(--amber);
+}
+
+.fe-form textarea {
+  resize: vertical;
+}
+
+/* Where the formula came from, highlighted */
+.fm-main .badge,
+.fm-card .badge {
+  align-self: flex-start;
+  padding: 4px 11px;
+  font-size: 13px;
+}
+
+.fm-main .badge.doc,
+.fm-card .badge.doc {
+  background: var(--highlight-tint);
+  color: var(--ink);
+  border: 1px solid var(--highlight);
+}
+
+/* List card: the heading and the source icon on one line, then the equation */
+.fm-card__top {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.fm-srcicon {
+  flex: none;
+  display: inline-grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 6px;
+  background: var(--highlight-tint);
+  border: 1px solid var(--highlight);
+  color: var(--ink);
+}
+
+/* a card with its tick box: the box sits at the start of the heading line, and the card makes room for it */
+.fm-cell {
+  position: relative;
+  display: flex;
+}
+
+.fm-cell > .fm-card {
+  flex: 1;
+  min-width: 0;
+}
+
+.fm-cell--tick > .fm-card {
+  padding-left: 46px;
+}
+
+.fm-tick {
+  position: absolute;
+  top: 15px;
+  left: 14px;
+}
+
+/* the tick box keeps its own size and look: the page's general input style must not stretch it */
+.fm-page input.fm-tick {
+  width: 18px;
+  height: 18px;
+  padding: 0;
+  border: 2px solid var(--accent-line);
+  border-radius: 5px;
+  background: var(--panel);
+}
+
+.fm-page input.fm-tick:checked {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+/* the heading with the + and the - beside it */
+.page-heading .fm-head {
+  margin-bottom: 0;
+}
+
+.fm-head h1 {
+  margin: 0;
+}
+
+/* select all, the question for the calculator and the filter, all on one line */
+.fm-bar {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.fm-bar .fm-ask {
+  flex: 3 1 0;
+  min-width: 0;
+}
+
+.fm-bar .fm-filter {
+  flex: 1 1 0;
+  min-width: 160px;
+  max-width: none;
+}
+
+@media (max-width: 760px) {
+  .fm-bar {
+    flex-wrap: wrap;
+  }
+
+  .fm-bar .fm-ask,
+  .fm-bar .fm-filter {
+    flex: 1 1 100%;
+  }
+}
+
+/* the select-all box is a plain tick box, not a text field; the filter is as tall as the question box beside it */
+.fm-page input.tick {
+  flex: none;
+  width: 18px;
+  height: 18px;
+  padding: 0;
+  align-self: center;
+  border-radius: 5px;
+}
+
+.fm-bar {
+  align-items: stretch;
+}
+
+.fm-bar .fm-filter {
+  height: auto;
+  align-self: stretch;
+}
+
+/* "Select all" with its tick box, on a line of its own above the cards */
+.fm-selectall {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: fit-content;
+  font-weight: 600;
+  cursor: pointer;
+}

@@ -1,0 +1,556 @@
+/* Start screen and the conversation: questions, answers, tables, notes. */
+
+/* Start screen */
+.hero {
+  padding: 56px 0 8px;
+  text-align: center;
+}
+
+.hero h1 {
+  margin: 0 0 10px;
+  font-size: var(--title-size);
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+}
+
+.hero p {
+  max-width: 520px;
+  margin: 0 auto 28px;
+  color: var(--ink-2);
+  font-size: 15.5px;
+}
+
+.pop {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  text-align: left;
+}
+
+.pop button {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 13px 15px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  text-align: left;
+  font-size: 14px;
+  line-height: 1.4;
+  transition: border-color 0.12s, transform 0.12s, box-shadow 0.12s;
+}
+
+.pop button:hover {
+  border-color: var(--accent-line);
+  box-shadow: var(--shadow);
+  transform: translateY(-1px);
+}
+
+.pop button i {
+  margin-top: 3px;
+  color: var(--accent);
+}
+
+/* Messages */
+.user-msg {
+  align-self: flex-end;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+  max-width: 82%;
+}
+
+.user-text {
+  padding: 10px 15px;
+  border-radius: var(--radius) var(--radius) 2px var(--radius);
+  background: var(--accent);
+  color: var(--accent-ink);
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.bot-msg {
+  min-width: 0;
+}
+
+.bot-body {
+  min-width: 0;
+}
+
+/* Loading placeholder */
+.skeleton {
+  display: grid;
+  gap: 9px;
+  margin: 6px 0 4px;
+}
+
+.skeleton i {
+  height: 12px;
+  border-radius: 6px;
+  background: linear-gradient(90deg, var(--line-2) 25%, var(--line) 50%, var(--line-2) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.3s infinite;
+}
+
+.skeleton i:nth-child(1) {
+  width: 92%;
+}
+
+.skeleton i:nth-child(2) {
+  width: 78%;
+}
+
+.skeleton i:nth-child(3) {
+  width: 54%;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes shimmer {
+  to {
+    background-position: -200% 0;
+  }
+}
+
+/* Answer text */
+.answer {
+  overflow-wrap: anywhere;
+  font-size: 15.5px;
+}
+
+.answer p {
+  margin: 0 0 0.7em;
+}
+
+.answer p:last-child {
+  margin-bottom: 0;
+}
+
+.answer .lead {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.answer ul,
+.answer ol {
+  margin: 0.1em 0 0.7em;
+}
+
+.answer ul {
+  padding-left: 1.25em;
+}
+
+.answer ol {
+  padding-left: 1.4em;
+}
+
+.answer li {
+  margin: 0.25em 0;
+  padding-left: 0.15em;
+}
+
+.answer li::marker {
+  color: var(--accent);
+}
+
+.answer strong {
+  font-weight: 650;
+}
+
+.answer code {
+  padding: 1px 6px;
+  border-radius: 6px;
+  background: var(--code);
+  font-size: 0.9em;
+}
+
+.answer em {
+  color: var(--muted);
+  font-style: normal;
+  font-size: 13px;
+}
+
+/* Reference number that opens a source */
+.cite {
+  min-width: 19px;
+  height: 19px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 2px;
+  padding: 0 5px;
+  border: 1px solid var(--accent-line);
+  border-radius: 6px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1;
+  vertical-align: 1px;
+}
+
+.cite:hover {
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+
+/* Tables in answers */
+.table-card {
+  margin: 12px 0;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  overflow: hidden;
+}
+
+.table-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 14px;
+  border-bottom: 1px solid var(--line);
+  background: var(--surface-2);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.table-title:empty {
+  display: none;
+}
+
+.table-title small {
+  margin-left: auto;
+  font-weight: 400;
+  color: var(--muted);
+}
+
+.table-title small:only-child {
+  margin-left: 0;
+}
+
+.table-scroll {
+  overflow-x: auto;
+}
+
+.table-card table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14.5px;
+}
+
+.table-card th {
+  padding: 9px 14px;
+  border-bottom: 1px solid var(--line);
+  background: var(--surface-2);
+  text-align: left;
+  font-size: 12.5px;
+  font-weight: 650;
+  letter-spacing: 0.02em;
+  color: var(--ink-2);
+  white-space: nowrap;
+}
+
+.table-card td {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--line-2);
+  vertical-align: top;
+  line-height: 1.5;
+}
+
+.table-card td:first-child {
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.table-card tr:last-child td {
+  border-bottom: 0;
+}
+
+.table-card tbody tr:hover td {
+  background: var(--surface-2);
+}
+
+.table-note {
+  padding: 10px 14px;
+  border-top: 1px solid var(--line-2);
+  font-size: 13.5px;
+  color: var(--ink-2);
+}
+
+/* Below the answer */
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.chips button {
+  padding: 7px 14px;
+  border: 1px solid var(--accent-line);
+  border-radius: 99px;
+  background: var(--accent-soft);
+  color: var(--ink);
+  text-align: left;
+  font-size: 13.5px;
+}
+
+.chips button:hover {
+  border-color: var(--accent);
+}
+
+.simple-card {
+  margin-bottom: 12px;
+  padding: 12px 16px;
+  border: 1px solid var(--accent-line);
+  border-radius: var(--radius);
+  background: var(--accent-soft);
+}
+
+.simple-card > b {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 11.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.simple-divider {
+  margin: 4px 0 8px;
+  font-size: 11.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.ai-note b {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 11.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.key-passages {
+  margin-top: 18px;
+}
+
+.key-passages h3 {
+  margin: 0 0 8px;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.key-passages blockquote {
+  margin: 0 0 9px;
+  padding: 9px 13px;
+  border-left: 3px solid var(--accent-line);
+  border-radius: 0 10px 10px 0;
+  background: var(--surface);
+  font-size: 14px;
+  color: var(--ink-2);
+}
+
+.key-passages cite {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-top: 5px;
+  font-style: normal;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.key-passages cite button {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.key-passages cite button:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 640px) {
+  .hero h1 {
+    font-size: var(--title-size);
+  }
+
+  .pop {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+/* Files an answer offers (a generated Word document) */
+.downloads {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+/* One answer block: a label, the answer, and (for a summary) the document text it is based on */
+.answer-card {
+  padding: 12px 16px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+
+
+.based-on {
+  margin-top: 10px;
+  padding-top: 8px;
+  border-top: 1px dashed var(--line);
+  font-size: 13.5px;
+}
+
+.based-on summary {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.based-on .answer {
+  margin-top: 8px;
+}
+
+.ibtn.small {
+  width: 26px;
+  height: 26px;
+  font-size: 12px;
+}
+
+/* Copy and edit on your own question */
+/* Copy and edit sit under your own question, bottom right, always shown */
+.user-tools {
+  display: flex;
+  gap: 2px;
+}
+
+/* What kind of task a question was understood as, and how the answer was made */
+.task-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: -2px 0 8px;
+}
+
+.task-chip {
+  padding: 1px 9px;
+  border-radius: 99px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: 11.5px;
+  font-weight: 550;
+}
+
+.trace {
+  margin-top: 10px;
+  padding: 8px 12px;
+  border: 1px solid var(--line-2);
+  border-radius: var(--radius);
+  background: var(--surface-2);
+  font-size: 13px;
+  color: var(--ink-2);
+}
+
+.trace summary {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.trace-tasks {
+  color: var(--accent);
+}
+
+.trace h4 {
+  margin: 10px 0 4px;
+  font-size: 11.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.trace ol,
+.trace ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.trace ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.trace li {
+  margin: 3px 0;
+}
+
+.trace-steps li {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.trace-steps li i {
+  flex: none;
+  color: var(--accent);
+  font-size: 11px;
+}
+
+.trace-steps small {
+  flex: 1;
+  min-width: 0;
+  color: var(--muted);
+  overflow-wrap: anywhere;
+}
+
+.trace-steps em {
+  flex: none;
+  color: var(--muted);
+  font-size: 12px;
+  font-style: normal;
+}
+
+.trace-total {
+  margin: 8px 0 0;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+/* The heading of one part of an answer to a question that asks several things */
+.answer h3.ans-h {
+  margin: 16px 0 6px;
+  font-size: 15px;
+  line-height: 1.35;
+}
+
+.answer h3.ans-h:first-child {
+  margin-top: 0;
+}
+
+/* the opening heading and its description, with the line under both like every other page */
+.hero > p {
+  padding-bottom: 16px;
+  margin-bottom: 22px;
+  border-bottom: 1px solid var(--line);
+}

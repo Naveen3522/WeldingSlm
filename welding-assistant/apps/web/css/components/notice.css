@@ -1,0 +1,83 @@
+/* A notice: one line, each status on its own tint, a bare icon, 16 px text. Used for every warning, error, information and success line in the app.
+   <div class="notice notice--warn"><i class="ms" data-icon="warn">...</i><span>Weak match. Check the sources.</span></div> */
+
+.notice {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border: 1px solid var(--notice-line);
+  border-radius: var(--radius);
+  background: var(--notice-tint);
+  color: var(--text);
+  font-size: 16px;
+  line-height: 1.45;
+  --notice-colour: var(--info);
+  --notice-tint: var(--info-tint);
+  --notice-line: color-mix(in srgb, var(--notice-colour) 70%, var(--panel));
+}
+
+.notice--success {
+  --notice-colour: var(--success);
+  --notice-tint: var(--success-tint);
+}
+
+.notice--warn {
+  --notice-colour: var(--warning);
+  --notice-tint: var(--warning-tint);
+}
+
+.notice--error {
+  --notice-colour: var(--error);
+  --notice-tint: var(--error-tint);
+}
+
+.notice > i.ms {
+  flex: none;
+  color: var(--notice-colour);
+  font-size: 1.3em;
+}
+
+.notice > span {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.notice a {
+  color: inherit;
+  font-weight: 600;
+}
+
+.notice a:hover {
+  text-decoration: underline;
+}
+
+/* In dark mode the icon is lightened so it stands out on its own tint */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .notice > i.ms {
+    color: color-mix(in srgb, var(--notice-colour) 55%, var(--text));
+  }
+}
+
+:root[data-theme="dark"] .notice > i.ms {
+  color: color-mix(in srgb, var(--notice-colour) 55%, var(--text));
+}
+
+.notice > span {
+  flex: 1;
+}
+
+.notice__close {
+  flex: none;
+  margin-left: auto;
+  padding: 2px;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--text-2);
+  line-height: 1;
+}
+
+.notice__close:hover {
+  background: color-mix(in srgb, var(--notice-colour) 20%, transparent);
+}

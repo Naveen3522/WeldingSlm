@@ -1,0 +1,18 @@
+{
+ "version": "v3-20261021-180915",
+ "mode": "full",
+ "rows": 3000,
+ "dev_rows": 300,
+ "new_rows": 0,
+ "replay_rows": 3000,
+ "pairs": 0,
+ "documents": [],
+ "kinds": {
+  "gold": 1950,
+  "contrastive": 450,
+  "wrong_passage": 450,
+  "empty": 150
+ },
+ "created": 1792586356.0043263,
+ "dir": "D:\\SLM\\welding_slm\\datasets\\v3-20261021-180915"
+}

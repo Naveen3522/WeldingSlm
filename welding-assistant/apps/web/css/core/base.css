@@ -1,0 +1,224 @@
+/* Reset, typography and the small pieces shared by every part of the page. */
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font: 15px/1.6 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+button,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+button,
+select,
+summary,
+a[href],
+[role="button"],
+[data-tab],
+.switch {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 8px;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+select {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 6px 9px;
+  font-size: 13px;
+}
+
+mark {
+  background: var(--mark);
+  color: inherit;
+  border-radius: 3px;
+  padding: 0 1px;
+}
+
+/* Every page is a column: the top bar, then the page body that scrolls */
+.app {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Small buttons used in source cards and the document viewer */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  border-radius: 8px;
+  padding: 5px 10px;
+  font-size: 12.5px;
+  font-weight: 550;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.btn:hover {
+  border-color: var(--accent-line);
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.btn.primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-ink);
+}
+
+.btn.primary:hover {
+  background: var(--accent);
+  color: var(--accent-ink);
+  filter: brightness(1.08);
+}
+
+.btn.ghost {
+  border-color: transparent;
+  background: transparent;
+  color: var(--muted);
+}
+
+.btn.ghost:hover {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Icon-only buttons with a tooltip */
+.ibtn {
+  display: inline-grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--ink-2);
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.ibtn:hover {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.ibtn.danger:hover {
+  background: rgba(220, 60, 60, 0.12);
+  color: var(--red);
+}
+
+.ibtn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* A password box with its show/hide eye */
+.pw {
+  position: relative;
+  display: flex;
+}
+
+.pw input {
+  flex: 1;
+  padding-right: 40px;
+}
+
+.pw .ibtn {
+  position: absolute;
+  top: 50%;
+  right: 4px;
+  transform: translateY(-50%);
+  width: 30px;
+  height: 30px;
+  border: 0;
+  background: none;
+}
+
+.linkbtn {
+  align-self: flex-start;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--accent);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.linkbtn:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+/* The browser's own show-password and clear icons would sit on top of ours */
+input::-ms-reveal,
+input::-ms-clear {
+  display: none;
+}
+
+/* The top of every page: the heading, its description, and a line under both */
+.page-heading {
+  margin: 0 0 18px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--line);
+}
+
+.page-heading h1 {
+  margin: 0;
+  font-size: var(--title-size);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+.page-heading .page-desc {
+  margin: 6px 0 0;
+  color: var(--ink-2);
+  font-size: var(--desc-size);
+  font-weight: 400;
+  line-height: 1.45;
+}
+
+/* a heading that sits in a row with buttons (Drafts, a draft, a template) keeps the line under the whole row */
+.work__head.page-heading {
+  align-items: flex-start;
+}
