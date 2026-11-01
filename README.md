@@ -46,7 +46,7 @@ python -m venv venv_gguf
 Downloads the base model (`unsloth/llama-3.2-1b-instruct`) from Hugging Face, merges the adapter, converts to Q8_0 GGUF and registers it in Ollama as **`welding-slm-q8`**, the name the app expects.
 ```bash
 # into the main .venv (NOT venv_gguf):
-pip install -r requirements-model.txt
+pip install -r requirements-model.txt      # into the main .venv (requirements-gguf.txt goes into venv_gguf)
 python welding_slm/pipeline/export.py --adapter welding_slm/lora_adapter --name welding-slm-q8 --work welding_slm/build
 ```
 It ends with a `DONE {...}` line. Check with `ollama list`.
@@ -56,10 +56,10 @@ It ends with a `DONE {...}` line. Check with `ollama list`.
 cd welding-assistant
 python scripts/create_admin.py        # add --ask to choose your own details
 python scripts/build_index.py         # builds the search index from ../KnowledgeBase (about a minute; start.bat also does it if missing)
-start.bat                             # Windows
-PYTHONPATH=src python apps/api/server.py   # Linux/Mac (or: make run)
+start.bat                             # Windows: builds the search index on the first start (a few minutes), then opens the app
+# Linux/Mac: export PYTHONPATH=src; make index; python apps/api/server.py
 ```
-Open <http://127.0.0.1:8765/>. Put your `.docx` files in **Library → Add documents**, then press **Reindex**. The sample documents are in `KnowledgeBase/`.
+Open <http://127.0.0.1:8765/>. Put your `.docx` files in **Library → Add documents**, then press **Reindex**. The search index is not stored in git; it is built from `KnowledgeBase/` the first time. The sample documents are in `KnowledgeBase/`.
 
 ## Optional: retraining
 Needs an NVIDIA GPU. `pip install -r requirements-training.txt`, then see `welding_slm/pipeline/train.py` (its docstring shows the arguments). Datasets are in `welding_slm/datasets/`. Afterwards re-run step 4 with your new adapter.
